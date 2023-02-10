@@ -1,0 +1,40 @@
+---
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <slot name="links" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} - Challenges</title>
+  </head>
+  <body>
+    <slot />
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https:github.com/RubenSmn">RubenSmn</a>.
+    </div>
+  </body>
+</html>
+
+<style>
+  .attribution {
+    margin-inline: auto;
+    margin-bottom: 2rem;
+    font-size: 11px;
+    text-align: center;
+  }
+  .attribution a {
+    color: hsl(228, 45%, 44%);
+  }
+</style>

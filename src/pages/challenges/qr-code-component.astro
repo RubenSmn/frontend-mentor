@@ -1,0 +1,88 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+---
+
+<ChallengeLayout title="QR Code Component - Challenges">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <div class="container">
+    <div class="card">
+      <img
+        src="/challenges/qr-code-component/image-qr-code.png"
+        alt="qr-code"
+      />
+      <h1>Improve your front-end skills by building projects</h1>
+      <p>
+        Scan the QR code to visit Frontend Mentor and take your coding skills to
+        the next level
+      </p>
+    </div>
+  </div>
+</ChallengeLayout>
+
+<style>
+  :root {
+    font-family: "Outfit", sans-serif;
+
+    --light-gray: hsl(212, 45%, 89%);
+    --grayish-blue: hsl(220, 15%, 55%);
+    --dark-blue: hsl(218, 44%, 22%);
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    background-color: var(--light-gray);
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .card {
+    padding: 18px;
+    border-radius: 1.5rem;
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    text-align: center;
+    width: 312px;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 1 / 1;
+  }
+
+  h1 {
+    font-size: 22px;
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--grayish-blue);
+    margin-inline: 15px;
+    margin-bottom: 1.5rem;
+  }
+</style>
