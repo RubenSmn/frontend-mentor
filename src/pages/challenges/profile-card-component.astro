@@ -49,6 +49,11 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
 
   body {
     background-color: var(--dark-cyan);
+    background-image: url("/frontend-mentor/challenges/profile-card-component/bg-pattern-top.svg"),
+      url("/frontend-mentor/challenges/profile-card-component/bg-pattern-bottom.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: right 50vw bottom 46vh, left 50vw top 44vh;
   }
 
   main {
@@ -59,27 +64,6 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
     overflow: hidden;
     position: relative;
   }
-
-  /* main::before, */
-  /* main::after { */
-  /*   background-repeat: no-repeat; */
-  /*   height: 100%; */
-  /*   width: 100%; */
-  /*   position: absolute; */
-  /*   z-index: -1; */
-  /* } */
-  /**/
-  /* main::before { */
-  /*   content: ""; */
-  /*   background-image: url("/frontend-mentor/challenges/profile-card-component/bg-pattern-top.svg"); */
-  /*   background-position: -50% 275%; */
-  /* } */
-  /**/
-  /* main::after { */
-  /*   content: ""; */
-  /*   background-image: url("/frontend-mentor/challenges/profile-card-component/bg-pattern-bottom.svg"); */
-  /*   background-position: 140% -250%; */
-  /* } */
 
   .card {
     position: relative;
@@ -142,7 +126,7 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
   .card-stats {
     display: flex;
     justify-content: space-evenly;
-    padding-block: 1.5rem;
+    padding-block: 22px;
   }
 
   .card-stats p {
