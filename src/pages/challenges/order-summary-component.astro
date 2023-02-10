@@ -1,0 +1,201 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+---
+
+<ChallengeLayout title="Order Summary Component">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main>
+    <div class="card">
+      <div class="card-header">
+        <img
+          src="/frontend-mentor/challenges/order-summary-component/illustration-hero.svg"
+          alt="illustartion hero"
+        />
+      </div>
+      <div class="card-content">
+        <h1>Order Summary</h1>
+        <p>
+          You can now listen to millions of songs, audiobooks, and podcasts on
+          any device anywhere you like!
+        </p>
+        <div class="information">
+          <img
+            src="/frontend-mentor/challenges/order-summary-component/icon-music.svg"
+            alt="music note"
+          />
+          <div>
+            <h2>Annual Plan</h2>
+            <p>$59.99/year</p>
+          </div>
+          <button>Change</button>
+        </div>
+        <button class="order">Proceed to Payment</button>
+        <button class="cancel">Cancel Order</button>
+      </div>
+    </div>
+  </main>
+</ChallengeLayout>
+
+<style>
+  :root {
+    font-family: "Red Hat Display", sans-serif;
+
+    --pale-blue: hsl(225, 100%, 94%);
+    --bright-blue: hsl(245, 75%, 52%);
+    --very-pale-blue: hsl(225, 100%, 98%);
+    --desaturated-blue: hsl(224, 23%, 55%);
+    --dark-blue: hsl(223, 47%, 23%);
+  }
+
+  body {
+    height: 100vh;
+    background-image: url("/frontend-mentor/challenges/order-summary-component/pattern-background-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--pale-blue);
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 312px;
+    box-shadow: 0 6px 24px -4px var(--desaturated-blue);
+    font-weight: 500;
+  }
+
+  .card-content {
+    padding: 24px;
+    text-align: center;
+  }
+
+  .card-content h1 {
+    color: var(--dark-blue);
+    font-weight: 900;
+    font-size: 22px;
+    margin-bottom: 1rem;
+  }
+
+  .card-content p {
+    color: var(--desaturated-blue);
+    font-size: 16px;
+  }
+  .card-content > p {
+    margin-bottom: 2rem;
+  }
+
+  .card-content .information {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-inline: 1rem;
+  }
+
+  .card-content .information img {
+    margin-right: 16px;
+  }
+
+  .card-content .information div {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .information h2 {
+    color: var(--dark-blue);
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  .information p {
+    font-size: 14px;
+  }
+
+  .information button {
+    color: var(--bright-blue);
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .order {
+    color: white;
+    background-color: var(--bright-blue);
+    border: 3px solid var(--bright-blue);
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 900;
+    box-shadow: 0 2px 16px -4px var(--bright-blue);
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: box-shadow 200ms ease, color 200ms ease-in;
+  }
+
+  .order:hover {
+    color: var(--pale-blue);
+    box-shadow: 2px 4px 18px -2px var(--bright-blue);
+  }
+
+  .cancel {
+    font-weight: 900;
+    color: var(--desaturated-blue);
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+    transition: color 200ms ease-in;
+  }
+
+  .cancel:hover {
+    color: var(--bright-blue);
+  }
+
+  @media only screen and (min-width: 768px) {
+    body {
+      background-image: url("/frontend-mentor/challenges/order-summary-component/pattern-background-desktop.svg");
+    }
+
+    .card {
+      width: 450px;
+    }
+
+    .card-content {
+      padding: 3rem;
+    }
+
+    .card-content h1 {
+      font-size: 28px;
+    }
+
+    .card-content > p {
+      margin-bottom: 3rem;
+    }
+
+    .card-content .information {
+      display: flex;
+      margin-bottom: 3rem;
+    }
+
+    .information h2,
+    .information p {
+      font-size: 16px;
+    }
+  }
+</style>
