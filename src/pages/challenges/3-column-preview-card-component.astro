@@ -13,41 +13,49 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
   </Fragment>
 
   <div class="container">
-    <div class="card orange">
-      <div class="icon">
-        <img src="./public/images/icon-sedans.svg" alt="Sedans" />
+    <div class="preview">
+      <div class="card orange">
+        <div class="icon">
+          <img
+            src="/challenges/3-column-preview-card-component/icon-sedans.svg"
+            alt="Sedans"
+          />
+        </div>
+        <h2>Sedans</h2>
+        <p>
+          Choose a sedan for its affordability and excellent fuel economy. Ideal
+          for cruising in the city or on your next road trip.
+        </p>
+        <button>Learn More</button>
       </div>
-      <h2>Sedans</h2>
-      <p>
-        Choose a sedan for its affordability and excellent fuel economy. Ideal
-        for cruising in the city or on your next road trip.
-      </p>
-      <button>Learn More</button>
-    </div>
-    <div class="card blue">
-      <div class="icon">
-        <img
-          src="/challenges/3-column-preview-card-component/icon-suvs.svg"
-          alt="SUVs"
-        />
+      <div class="card blue">
+        <div class="icon">
+          <img
+            src="/challenges/3-column-preview-card-component/icon-suvs.svg"
+            alt="SUVs"
+          />
+        </div>
+        <h2>SUVs</h2>
+        <p>
+          Take an SUV for its spacious interior, power, and versatility. Perfect
+          for your next family vacation and off-road adventures.
+        </p>
+        <button>Learn More</button>
       </div>
-      <h2>SUVs</h2>
-      <p>
-        Take an SUV for its spacious interior, power, and versatility. Perfect
-        for your next family vacation and off-road adventures.
-      </p>
-      <button>Learn More</button>
-    </div>
-    <div class="card green">
-      <div class="icon">
-        <img src="./public/images/icon-luxury.svg" alt="Luxury" />
+      <div class="card green">
+        <div class="icon">
+          <img
+            src="/challenges/3-column-preview-card-component/icon-luxury.svg"
+            alt="Luxury"
+          />
+        </div>
+        <h2>Luxury</h2>
+        <p>
+          Cruise in the best car brands without the bloated prices. Enjoy the
+          enhanced comfort of a luxury rental and arrive in style.
+        </p>
+        <button>Learn More</button>
       </div>
-      <h2>Luxury</h2>
-      <p>
-        Cruise in the best car brands without the bloated prices. Enjoy the
-        enhanced comfort of a luxury rental and arrive in style.
-      </p>
-      <button>Learn More</button>
     </div>
   </div>
 </ChallengeLayout>
@@ -61,18 +69,19 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
     --green: #194141;
   }
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   body {
     background-color: var(--light-grey);
     height: 100vh;
   }
 
   .container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .preview {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -143,11 +152,10 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
   }
 
   @media (min-width: 776px) {
-    .container {
-      height: 100%;
+    .preview {
       flex-direction: row;
       justify-content: center;
-      align-items: center;
+      align-items: stretch;
     }
 
     .card {
