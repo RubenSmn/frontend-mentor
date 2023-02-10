@@ -1,6 +1,4 @@
 :root {
-  /* font-family: "Big Shoulders Display", cursive; */
-  /* font-family: "Lexend Deca", sans-serif; */
   --light-grey: hsl(0, 0%, 95%);
   --transparent-white: hsla(0, 0%, 100%, 0.75);
   --orange: #d88a35;
@@ -82,7 +80,6 @@ button {
   color: inherit;
 }
 
-/* @media (min-width: 712px) { */
 @media (min-width: 776px) {
   .container {
     height: 100%;
@@ -109,8 +106,6 @@ button {
 }
 
 .attribution {
-  /* position: sticky; */
-  /* bottom: 2rem; */
   margin-inline: auto;
   margin-bottom: 2rem;
   font-size: 11px;
