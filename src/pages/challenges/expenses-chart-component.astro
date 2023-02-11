@@ -1,10 +1,7 @@
 ---
 import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
 
-const response = await fetch(
-  `${Astro.url.origin}/frontend-mentor/challenges/expenses-chart-component/data.json`
-);
-const data = await response.json();
+import data from "../../data/expenses-chart-component.json";
 
 const currDay = new Date()
   .toLocaleDateString("en-us", {
@@ -39,7 +36,7 @@ const currDay = new Date()
         <h3>Spending - Last 7 days</h3>
         <ul>
           {
-            data.map((dataPoint: { day: string; amount: string }) => {
+            (data as { day: string; amount: string }[]).map((dataPoint) => {
               const className =
                 dataPoint.day === currDay ? "bar active" : "bar";
               const height = parseInt(dataPoint.amount) * 3;
@@ -179,6 +176,7 @@ const currDay = new Date()
   }
 
   .bar-container {
+    position: relative;
     display: flex;
     flex-direction: column-reverse;
     height: inherit;
