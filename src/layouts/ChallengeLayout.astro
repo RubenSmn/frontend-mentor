@@ -1,7 +1,7 @@
 ---
 export interface Props {
   title: string;
-  isDark: boolean;
+  isDark?: boolean;
 }
 
 const { title, isDark = false } = Astro.props;
