@@ -1,0 +1,264 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+
+const response = await fetch(
+  `${Astro.url.origin}/frontend-mentor/challenges/expenses-chart-component/data.json`
+);
+const data = await response.json();
+
+const currDay = new Date()
+  .toLocaleDateString("en-us", {
+    weekday: "short",
+  })
+  .toLowerCase();
+---
+
+<ChallengeLayout title="Expenses Chart Component">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main>
+    <section class="balance">
+      <div>
+        <h1>$921.48</h1>
+        <p>My balance</p>
+      </div>
+      <img
+        src="/frontend-mentor/challenges/expenses-chart-component/logo.svg"
+        alt="expenses logo"
+      />
+    </section>
+    <section class="card">
+      <div class="graph">
+        <h3>Spending - Last 7 days</h3>
+        <ul>
+          {
+            data.map((dataPoint: { day: string; amount: string }) => {
+              const className =
+                dataPoint.day === currDay ? "bar active" : "bar";
+              const height = parseInt(dataPoint.amount) * 3;
+              return (
+                <li>
+                  <div class="bar-container">
+                    <span class="tooltip" style={`bottom: ${height + 4}px`}>
+                      ${dataPoint.amount}
+                    </span>
+                    <div class={className} style={`height: ${height}px`} />
+                  </div>
+                  <p>{dataPoint.day}</p>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+      <hr />
+      <div class="stats">
+        <div>
+          <h2>$478.33</h2>
+          <p>Total this month</p>
+        </div>
+        <div>
+          <strong>+2.4%</strong>
+          <p>from last month</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "DM Sans", sans-serif;
+
+    --soft-red: hsl(10, 79%, 65%);
+    --cyan: hsl(186, 34%, 60%);
+    --dark-brown: hsl(25, 47%, 15%);
+    --medium-brown: hsl(28, 10%, 53%);
+    --cream: hsl(27, 66%, 92%);
+    --very-pale-orange: hsl(33, 100%, 98%);
+  }
+
+  body {
+    background-color: var(--cream);
+    height: 100vh;
+  }
+
+  main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .balance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 330px;
+    padding: 18px;
+    background-color: var(--soft-red);
+    color: white;
+    border-radius: 12px;
+  }
+
+  .balance > div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .balance h1 {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .balance p {
+    font-weight: 400;
+  }
+
+  .balance img {
+    height: 36px;
+  }
+
+  .card {
+    width: 330px;
+    padding: 18px;
+    color: var(--medium-brown);
+    background-color: var(--very-pale-orange);
+    border-radius: 12px;
+  }
+
+  .card h2,
+  .card h3,
+  .card strong {
+    color: var(--dark-brown);
+    font-weight: 700;
+  }
+
+  .card .graph {
+    margin-bottom: 18px;
+  }
+
+  .graph h3 {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .graph ul {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .graph li {
+    position: relative;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .graph .bar {
+    width: 28px;
+    background-color: var(--soft-red);
+    border-radius: 4px;
+    transition: opacity 200ms ease-in;
+    cursor: pointer;
+  }
+
+  .bar:hover {
+    opacity: 0.6;
+  }
+
+  .bar-container {
+    display: flex;
+    flex-direction: column-reverse;
+    height: inherit;
+  }
+
+  .bar-container:hover .tooltip {
+    visibility: visible;
+  }
+
+  .graph li .bar.active {
+    background-color: var(--cyan);
+  }
+
+  .graph .tooltip {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+    font-weight: 700;
+    padding: 2px 4px;
+    font-size: 15px;
+    background-color: var(--dark-brown);
+    color: white;
+    border-radius: 4px;
+    visibility: hidden;
+    transition: visibility 200ms ease-in;
+  }
+
+  .graph li p {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+
+  .card hr {
+    height: 1.5px;
+    border: none;
+    background-color: var(--cream);
+    margin-bottom: 18px;
+  }
+
+  .card .stats {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .card .stats div:first-of-type {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .card .stats div:last-of-type {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: end;
+  }
+
+  .stats strong,
+  .stats p {
+    font-size: 14px;
+  }
+
+  .card .stats h2 {
+    font-size: 28px;
+  }
+
+  @media only screen and (min-width: 512px) {
+    .card,
+    .balance {
+      width: 380px;
+      padding: 18px 24px;
+    }
+
+    .graph .bar {
+      width: 36px;
+    }
+
+    .stats strong,
+    .stats p {
+      font-size: 12px;
+    }
+  }
+</style>
