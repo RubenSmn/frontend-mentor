@@ -1,38 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+
+const challenges = [
+  {
+    title: "QR Code Component",
+    url: "/frontend-mentor/challenges/qr-code-component",
+  },
+  {
+    title: "3 Column Preview Card Component",
+    url: "/frontend-mentor/challenges/3-column-preview-card-component",
+  },
+  {
+    title: "Profile Card Component",
+    url: "/frontend-mentor/challenges/profile-card-component",
+  },
+  {
+    title: "Order Summary Component",
+    url: "/frontend-mentor/challenges/order-summary-component",
+  },
+  {
+    title: "NFT Card Preview Component",
+    url: "/frontend-mentor/challenges/nft-card-preview-component",
+  },
+];
 ---
 
 <Layout title="Welcome to my Frontend Mentor challenges">
-  <main>
-    <h1 class="text-4xl font-bold">Welcome to my Frontend Mentor challenges</h1>
-    <p>This is where all my challenges solutions will live!</p>
-    <ul role="list" class="link-card-grid">
-      <li>
-        <a href="/frontend-mentor/challenges/qr-code-component">
-          QR Code Component
-        </a>
-      </li>
-      <li>
-        <a href="/frontend-mentor/challenges/3-column-preview-card-component">
-          3 Column Preview Card Component
-        </a>
-      </li>
-      <li>
-        <a href="/frontend-mentor/challenges/profile-card-component">
-          Profile Card Component
-        </a>
-      </li>
-      <li>
-        <a href="/frontend-mentor/challenges/order-summary-component">
-          Order Summary Component
-        </a>
-      </li>
-      <li>
-        <a href="/frontend-mentor/challenges/nft-card-preview-component">
-          NFT Card Preview Component
-        </a>
-      </li>
+  <main class="container p-4 mx-auto">
+    <h1 class="text-4xl font-bold mb-2 text-white">
+      Welcome to my Frontend Mentor challenges
+    </h1>
+    <p class="mb-4 text-white">
+      This is where all my challenges solutions will live!
+    </p>
+    <ul role="list" class="">
+      {
+        challenges.map((challenge) => {
+          return (
+            <li class="capitalize p-4 my-2 rounded-lg text-yellow-500 bg-gray-900 shadow-md hover:bg-gray-800 ease-in duration-150">
+              <a
+                href={challenge.url}
+                class="flex justify-between items-stretch font-bold text-lg"
+              >
+                {challenge.title}
+                <span class="flex items-center text-xl">&rarr;</span>
+              </a>
+            </li>
+          );
+        })
+      }
     </ul>
   </main>
 </Layout>
