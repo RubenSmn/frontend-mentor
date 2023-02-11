@@ -1,0 +1,235 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+---
+
+<ChallengeLayout title="Fylo data storage component" isDark>
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main>
+    <div>
+      <section class="heading">
+        <img
+          src="/frontend-mentor/challenges/fylo-data-storage-component/logo.svg"
+          alt="Fylo logo"
+        />
+        <div class="actions">
+          <button>
+            <img
+              src="/frontend-mentor/challenges/fylo-data-storage-component/icon-document.svg"
+              alt="document icon"
+            /></button
+          >
+          <button>
+            <img
+              src="/frontend-mentor/challenges/fylo-data-storage-component/icon-folder.svg"
+              alt="folder icon"
+            /></button
+          >
+          <button>
+            <img
+              src="/frontend-mentor/challenges/fylo-data-storage-component/icon-upload.svg"
+              alt="upload icon"
+            /></button
+          >
+        </div>
+      </section>
+      <section class="stats">
+        <h1>You’ve used <strong>815 GB</strong> of your storage</h1>
+        <div class="progress-bar">
+          <div class="bar"><div class="dot"></div></div>
+        </div>
+        <div class="progress-text">
+          <strong>0 GB</strong>
+          <strong>1000 GB</strong>
+        </div>
+        <div class="amount-left"><strong>185</strong> GB Left</div>
+      </section>
+    </div>
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Raleway", sans-serif;
+
+    --blue: #1d244a;
+    --orange: hsl(6, 100%, 80%);
+    --pinkish: hsl(335, 100%, 65%);
+    --pale-blue: hsl(243, 100%, 93%);
+    --grayish-blue: hsl(229, 7%, 55%);
+    --dark-blue: hsl(228, 56%, 26%);
+    --very-dark-blue: hsl(229, 57%, 11%);
+  }
+
+  body {
+    background-image: url("/frontend-mentor/challenges/fylo-data-storage-component/bg-mobile.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  main > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  section {
+    background-color: var(--dark-blue);
+    width: 330px;
+    padding: 36px;
+    border-radius: 12px;
+    color: white;
+  }
+
+  .heading {
+    border-top-right-radius: 88px;
+  }
+
+  .heading > img {
+    margin-bottom: 32px;
+  }
+
+  .heading .actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  .heading button {
+    height: 48px;
+    width: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--very-dark-blue);
+    border-radius: 12px;
+    border: none;
+  }
+
+  .stats {
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+    color: var(--pale-blue);
+    padding: 28px 36px 42px;
+  }
+
+  .stats h1 {
+    margin-bottom: 12px;
+  }
+
+  .progress-bar {
+    height: 20px;
+    background-color: var(--blue);
+    border-radius: 16px;
+    padding: 3px;
+  }
+
+  .bar {
+    height: 100%;
+    width: calc(815 / 1000 * 100%);
+    border-radius: 7px;
+    background: linear-gradient(90deg, var(--orange), var(--pinkish));
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .dot {
+    background-color: var(--pale-blue);
+    height: 10px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    margin-right: 1px;
+  }
+
+  .progress-text {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+
+  .progress-text strong {
+    font-size: 12px;
+  }
+
+  .amount-left {
+    position: absolute;
+    bottom: -25%;
+    left: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 6px 24px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--grayish-blue);
+    border-radius: 12px;
+    transform: translateX(-50%);
+    font-weight: 700;
+  }
+
+  .amount-left strong {
+    font-size: 36px;
+    color: var(--very-dark-blue);
+    margin-right: 8px;
+  }
+
+  @media only screen and (min-width: 912px) {
+    body {
+      background-color: var(--very-dark-blue);
+      background-position-y: 50vh;
+      background-image: url("/frontend-mentor/challenges/fylo-data-storage-component/bg-desktop.png");
+    }
+
+    main > div {
+      display: flex;
+      flex-direction: row;
+      align-items: end;
+      gap: 24px;
+    }
+
+    .stats {
+      width: auto;
+      min-width: 512px;
+    }
+
+    .stats h1 {
+      text-align: left;
+    }
+
+    .amount-left {
+      top: -30%;
+      right: -48px;
+      left: unset;
+      bottom: unset;
+    }
+
+    .amount-left::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -18px;
+      border: solid transparent;
+      border-width: 19px;
+      border-right: 19px solid white;
+    }
+  }
+</style>
