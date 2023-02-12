@@ -1,0 +1,242 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+
+import data from "../../data/job-listings-with-filtering.json";
+import JobList from "../../components/challenges/job-listings-with-filtering/JobList";
+---
+
+<ChallengeLayout title="Job Listings with Filtering">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+  <header></header>
+  <main>
+    <JobList client:load jobs={data} />
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "League Spartan", sans-serif;
+
+    --desaturated-dark-cyan: hsl(180, 29%, 50%);
+    --light-cyan-background: hsl(180, 52%, 96%);
+    --light-cyan-filter: hsl(180, 31%, 95%);
+    --dark-grayish-cyan: hsl(180, 8%, 52%);
+    --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--light-cyan-background);
+    position: relative;
+  }
+
+  header {
+    background-color: var(--desaturated-dark-cyan);
+    background-image: url("/frontend-mentor/challenges/job-listings-with-filtering/bg-header-mobile.svg");
+    margin-bottom: 24px;
+    height: 156px;
+  }
+
+  main {
+    position: relative;
+    font-size: 15px;
+  }
+
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.15);
+    margin: 24px;
+    margin-top: -72px;
+    border-radius: 4px;
+    padding: 18px;
+  }
+
+  .filter ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .filter li {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--desaturated-dark-cyan);
+    background-color: var(--light-cyan-filter);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .filter p {
+    padding: 4px 8px;
+  }
+
+  .filter .remove-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--desaturated-dark-cyan);
+    height: 100%;
+    padding: 8px;
+    transition: background-color 150ms ease-in;
+  }
+
+  .filter .remove-icon:hover {
+    background-color: var(--very-dark-grayish-cyan);
+  }
+
+  .filter .clear-button {
+    color: var(--desaturated-dark-cyan);
+    font-weight: 700;
+  }
+
+  .listings {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 24px;
+  }
+
+  .job-listing {
+    position: relative;
+    background-color: white;
+    box-shadow: 0 8px 16px -2px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid var(--desaturated-dark-cyan);
+    border-radius: 4px;
+    padding: 18px;
+    padding-top: 28px;
+  }
+
+  .job-listing .company-logo {
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    top: -24px;
+    left: 18px;
+  }
+
+  .job-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .pill {
+    height: 24px;
+    line-height: 24px;
+    padding: 0px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .pill.new {
+    background-color: var(--desaturated-dark-cyan);
+  }
+
+  .pill.featured {
+    background-color: var(--very-dark-grayish-cyan);
+  }
+
+  .job-listing h2 {
+    color: var(--desaturated-dark-cyan);
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  .job-listing h3 {
+    color: var(--very-dark-grayish-cyan);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .job-listing .features {
+    display: flex;
+    gap: 8px;
+    color: var(--dark-grayish-cyan);
+  }
+
+  .job-listing hr {
+    border: none;
+    background-color: var(--dark-grayish-cyan);
+    height: 1px;
+    margin-block: 16px;
+  }
+
+  .job-listing ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .job-listing li {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--desaturated-dark-cyan);
+    background-color: var(--light-cyan-filter);
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 150ms ease-in, color 150ms ease-in;
+  }
+
+  .job-listing li.active {
+    color: white;
+    background-color: var(--desaturated-dark-cyan);
+    cursor: default;
+  }
+
+  .job-listing li:hover {
+    color: white;
+    background-color: var(--desaturated-dark-cyan);
+  }
+
+  @media only screen and (min-width: 992px) {
+    header {
+      background-image: url("/frontend-mentor/challenges/job-listings-with-filtering/bg-header-desktop.svg");
+    }
+
+    main {
+      max-width: 1200px;
+      margin-inline: auto;
+    }
+
+    .job-listing {
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .job-listing .company-logo {
+      position: unset;
+      height: 100%;
+      width: auto;
+    }
+
+    .job-listing .general-info {
+      flex: 1;
+    }
+
+    .job-listing hr {
+      display: none;
+    }
+  }
+</style>
