@@ -133,12 +133,17 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
+    transition: color 100ms ease-in;
+  }
+
+  .information button:hover {
+    color: var(--desaturated-blue);
+    text-decoration: none;
   }
 
   .order {
     color: white;
     background-color: var(--bright-blue);
-    border: 3px solid var(--bright-blue);
     width: 100%;
     padding: 12px;
     border-radius: 12px;
@@ -146,12 +151,11 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
     box-shadow: 0 2px 16px -4px var(--bright-blue);
     margin-bottom: 20px;
     cursor: pointer;
-    transition: box-shadow 200ms ease, color 200ms ease-in;
+    transition: opacity 200ms ease-in;
   }
 
   .order:hover {
-    color: var(--pale-blue);
-    box-shadow: 2px 4px 18px -2px var(--bright-blue);
+    opacity: 0.7;
   }
 
   .cancel {
@@ -164,7 +168,7 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
   }
 
   .cancel:hover {
-    color: var(--bright-blue);
+    color: var(--dark-blue);
   }
 
   @media only screen and (min-width: 768px) {
