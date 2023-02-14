@@ -20,7 +20,9 @@ const { title, isDark = false } = Astro.props;
   <body>
     <slot />
     <footer
-      class={`mx-auto mb-8 text-xs text-center${isDark ? " text-white" : ""}`}
+      class={`mx-auto mt-[100%] mb-8 text-xs text-center${
+        isDark ? " text-white" : ""
+      }`}
     >
       Challenge by
       <a

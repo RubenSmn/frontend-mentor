@@ -1,0 +1,606 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+
+import Step from "../../components/challenges/multi-step-form/Step";
+import StepIndicator from "../../components/challenges/multi-step-form/StepIndicator";
+import StepNavigation from "../../components/challenges/multi-step-form/StepNavigation";
+---
+
+<ChallengeLayout title="Job Listings with Filtering">
+  <Fragment slot="links"></Fragment>
+  <nav>
+    <StepIndicator client:load />
+  </nav>
+
+  <main>
+    <Step step={1} client:only="react">
+      <section class="step personal-info">
+        <h1>Personal info</h1>
+        <p class="description">
+          Please provide your name, email address, and phone number.
+        </p>
+
+        <label>
+          <span>Name</span>
+          <input name="name" type="text" placeholder="e.g. Stephen King" />
+        </label>
+
+        <label>
+          <span>Email Address</span>
+          <input
+            name="email"
+            type="text"
+            placeholder="e.g. stephenking@lorem.com"
+          />
+        </label>
+
+        <label>
+          <span>Phone Number</span>
+          <input
+            name="phone-number"
+            type="text"
+            placeholder="e.g. +1 234 567 890"
+          />
+        </label>
+      </section>
+    </Step>
+    <!-- Step 1 end -->
+
+    <!-- Step 2 start -->
+    <Step step={2} client:idle>
+      <section class="step">
+        <h1>Select your plan</h1>
+        <p class="description">
+          You have the option of monthly or yearly billing.
+        </p>
+
+        <div class="plan-selection">
+          <label class="active">
+            <img src={`${Astro.url.href}/icon-arcade.svg`} alt="" />
+            <div>
+              <h3>Arcade</h3>
+              <p>$9/mo</p>
+              <p class="yearly-information">2 months free</p>
+            </div>
+            <input name="plan" type="radio" />
+          </label>
+          <label>
+            <img src={`${Astro.url.href}/icon-advanced.svg`} alt="" />
+            <div>
+              <h3>Advanced</h3>
+              <p>$12/mo</p>
+              <p class="yearly-information">2 months free</p>
+            </div>
+            <input name="plan" type="radio" />
+          </label>
+          <label>
+            <img src={`${Astro.url.href}/icon-pro.svg`} alt="" />
+            <div>
+              <h3>Pro</h3>
+              <p>$15/mo</p>
+              <p class="yearly-information">2 months free</p>
+            </div>
+            <input name="plan" type="radio" />
+          </label>
+        </div>
+
+        <div class="button-month-year">
+          <strong class="active">Monthly</strong>
+          <input
+            id="month-year"
+            type="checkbox"
+            name="subscription"
+            checked={true}
+            value={""}
+          />
+          <label for="month-year">
+            <span class="dot"></span>
+          </label>
+          <strong>Yearly</strong>
+        </div>
+      </section>
+    </Step>
+    <!-- Step 2 end -->
+
+    <!-- Step 3 start -->
+    <Step step={3} client:idle>
+      <section class="step">
+        <h1>Pick add-ons</h1>
+        <p class="description">Add-ons help enhance your gaming experience.</p>
+
+        <div class="addon-selection">
+          <input id="online-service" type="checkbox" />
+          <label for="online-service">
+            <span class="checkmark"></span>
+            <div class="input-info">
+              <h3>Online service</h3>
+              <p>Access to multiplayer games</p>
+            </div>
+            <p class="extra-price">+$1/mo</p>
+          </label>
+
+          <input id="larger-storage" type="checkbox" />
+          <label for="larger-storage">
+            <span class="checkmark"></span>
+            <div class="input-info">
+              <h3>Larger storage</h3>
+              <p>Extra 1TB of cloud save</p>
+            </div>
+            <p class="extra-price">+$2/mo</p>
+          </label>
+
+          <input id="customizable-profile" type="checkbox" />
+          <label for="customizable-profile">
+            <span class="checkmark"></span>
+            <div class="input-info">
+              <h3>Customizable Profile</h3>
+              <p>Custom theme on your profile</p>
+            </div>
+            <p class="extra-price">+$2/mo</p>
+          </label>
+        </div>
+      </section>
+    </Step>
+
+    <!-- Step 3 end -->
+
+    <!-- Step 4 start -->
+    <Step step={4} client:idle>
+      <section class="step">
+        <h1>Finishing up</h1>
+        <p class="description">
+          Double-check everything looks OK before confirming.
+        </p>
+
+        <ul class="finishing-up">
+          <li>
+            <div class="base-cost">
+              <strong>Arcade (Monthly)</strong>
+              <button>Change</button>
+            </div>
+            <strong>$9/mo</strong>
+          </li>
+          <hr />
+          <li>
+            <p>Online service</p>
+            <span>+$1/mo</span>
+          </li>
+          <li>
+            <p>Larger storage</p>
+            <span>+$2/mo</span>
+          </li>
+          <li class="total-cost">
+            <p>Total (per month/year)</p>
+            <strong>+$12/mo</strong>
+          </li>
+        </ul>
+      </section>
+    </Step>
+
+    <!-- Step 4 end -->
+
+    <!-- Step 5 start -->
+
+    <Step step={5} client:idle>
+      <section class="step thank-you">
+        <img
+          src={`${Astro.url.href}/icon-thank-you.svg`}
+          alt="red check icon"
+        />
+        <h1>Thank you!</h1>
+        <p>
+          Thanks for confirming your subscription! We hope you have fun using
+          our platform. If you ever need support, please feel free to email us
+          at support@loremgaming.com.
+        </p>
+      </section>
+    </Step>
+
+    <!-- Step 5 end -->
+  </main>
+
+  <StepNavigation client:load />
+</ChallengeLayout>
+
+<style is:inline>
+  @font-face {
+    font-family: "Ubuntu";
+    src: url("/frontend-mentor/challenges/fonts/Ubuntu-Regular.ttf")
+      format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Ubuntu";
+    src: url("/frontend-mentor/challenges/fonts/Ubuntu-Medium.ttf")
+      format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Ubuntu";
+    src: url("/frontend-mentor/challenges/fonts/Ubuntu-Bold.ttf")
+      format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    /* Primary */
+    --marine-blue: hsl(213, 96%, 18%);
+    --purplish-blue: hsl(243, 100%, 62%);
+    --pastel-blue: hsl(228, 100%, 84%);
+    --light-blue: hsl(206, 94%, 87%);
+    --strawberry-red: hsl(354, 84%, 57%);
+    /* Neutral */
+    --cool-gray: hsl(231, 11%, 63%);
+    --light-gray: hsl(229, 24%, 87%);
+    --magnolia: -hsl(217, 100%, 97%);
+    --alabaster: hsl(231, 100%, 99%);
+    --white: hsl(0, 0%, 100%);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--white);
+    background-image: url("/frontend-mentor/challenges/multi-step-form/bg-sidebar-mobile.svg");
+    background-position-y: top;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    font-family: "Ubuntu";
+  }
+
+  main {
+    position: relative;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav {
+    width: 100%;
+    padding: 36px;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  nav p,
+  nav h2 {
+    display: none;
+  }
+
+  .step-indicator {
+    height: 36px;
+    width: 36px;
+    border: 1px solid var(--pastel-blue);
+    color: white;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+  }
+
+  .step-indicator.active {
+    background-color: var(--pastel-blue);
+    color: var(--marine-blue);
+  }
+
+  .step {
+    width: 330px;
+    padding: 24px 20px;
+    border-radius: 16px;
+    background-color: var(--alabaster);
+    box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+  }
+
+  .step h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--marine-blue);
+    margin-bottom: 12px;
+  }
+
+  .step .description {
+    font-weight: 400;
+    color: var(--cool-gray);
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .step input[type="text"] {
+    width: 100%;
+    border: 1px solid var(--light-gray);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+
+  .step input::placeholder {
+    font-weight: 700;
+    color: var(--cool-gray);
+  }
+
+  .personal-info label {
+    color: var(--marine-blue);
+    font-weight: 400;
+    font-size: 12px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .plan-selection input {
+    visibility: hidden;
+  }
+
+  .plan-selection label {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .plan-selection label.active {
+    border-color: var(--marine-blue);
+  }
+
+  .plan-selection div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .plan-selection h3 {
+    font-weight: 500;
+    color: var(--marine-blue);
+    font-size: 16px;
+  }
+
+  .plan-selection p {
+    color: var(--cool-gray);
+    font-size: 14px;
+  }
+
+  .plan-selection .yearly-information {
+    color: var(--marine-blue);
+    font-size: 12px;
+  }
+
+  .button-month-year {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .button-month-year label {
+    height: 18px;
+    background-color: var(--marine-blue);
+    border-radius: 9px;
+    width: 36px;
+    padding-inline: 4px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: justify-content 200ms ease-in;
+    cursor: pointer;
+  }
+
+  .button-month-year label .dot {
+    height: 60%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--alabaster);
+    border-radius: 100%;
+  }
+
+  .button-month-year strong {
+    color: var(--cool-gray);
+  }
+
+  .button-month-year strong.active {
+    color: var(--marine-blue);
+  }
+
+  .button-month-year input[type="checkbox"]:checked + label {
+    justify-content: flex-end;
+  }
+
+  .button-month-year input {
+    display: none;
+  }
+
+  .addon-selection input {
+    position: absolute;
+    opacity: 0;
+  }
+
+  .addon-selection label {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+
+  .addon-selection label .checkmark {
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .addon-selection input[type="checkbox"]:checked + label .checkmark {
+    background-color: var(--purplish-blue);
+    border-color: var(--purplish-blue);
+  }
+
+  .addon-selection input[type="checkbox"]:checked + label {
+    border-color: var(--marine-blue);
+  }
+
+  .addon-selection label .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    top: 40%;
+    left: 50%;
+  }
+
+  .addon-selection input[type="checkbox"]:checked + label .checkmark:after {
+    display: block;
+  }
+
+  .addon-selection label .checkmark:after {
+    width: 6px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .addon-selection .input-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+  }
+
+  .addon-selection h3 {
+    color: var(--marine-blue);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .addon-selection p {
+    font-size: 12px;
+    color: var(--cool-gray);
+  }
+
+  .addon-selection .extra-price {
+    color: var(--purplish-blue);
+  }
+
+  .finishing-up {
+    padding: 12px;
+    font-size: 14px;
+    color: var(--cool-gray);
+  }
+
+  .finishing-up li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .finishing-up li > div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .finishing-up li strong {
+    font-weight: 500;
+    color: var(--marine-blue);
+  }
+
+  .finishing-up li span {
+    color: var(--marine-blue);
+  }
+
+  .finishing-up li:first-of-type > strong {
+    font-weight: 700;
+  }
+
+  .finishing-up button {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .finishing-up hr {
+    border: none;
+    background-color: var(--light-gray);
+    height: 1px;
+    margin-block: 12px;
+  }
+
+  .finishing-up .total-cost {
+    margin-top: 28px;
+  }
+
+  .finishing-up .total-cost strong {
+    color: var(--purplish-blue);
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .thank-you {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .thank-you img {
+    height: 64px;
+    width: 64px;
+    margin-block: 48px 24px;
+  }
+
+  .thank-you p {
+    color: var(--cool-gray);
+    text-align: center;
+    padding-inline: 4px;
+    margin-bottom: 64px;
+    font-size: 15px;
+  }
+
+  .navigation-buttons {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .navigation-buttons .back {
+    color: var(--cool-gray);
+  }
+
+  .navigation-buttons .next {
+    background-color: var(--marine-blue);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  .navigation-buttons .next.final {
+    background-color: var(--purplish-blue);
+  }
+</style>
