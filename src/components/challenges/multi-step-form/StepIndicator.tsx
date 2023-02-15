@@ -7,32 +7,32 @@ function StepIndicator() {
   return (
     <ul>
       <li className={`step-indicator${$currentStep === 1 ? " active" : ""}`}>
-        <p>Step 1</p>
-        <>
-          <div>1</div>
+        <span>1</span>
+        <div>
+          <p>Step 1</p>
           <h2>Your info</h2>
-        </>
+        </div>
       </li>
       <li className={`step-indicator${$currentStep === 2 ? " active" : ""}`}>
-        <p>Step 2</p>
-        <>
-          <div>2</div>
+        <span>2</span>
+        <div>
+          <p>Step 2</p>
           <h2>Select plan</h2>
-        </>
+        </div>
       </li>
       <li className={`step-indicator${$currentStep === 3 ? " active" : ""}`}>
-        <p>Step 3</p>
-        <>
-          <div>3</div>
+        <span>3</span>
+        <div>
+          <p>Step 3</p>
           <h2>Add-ons</h2>
-        </>
+        </div>
       </li>
       <li className={`step-indicator${$currentStep >= 4 ? " active" : ""}`}>
-        <p>Step 4</p>
-        <>
-          <div>4</div>
+        <span>4</span>
+        <div>
+          <p>Step 4</p>
           <h2>Summary</h2>
-        </>
+        </div>
       </li>
     </ul>
   );

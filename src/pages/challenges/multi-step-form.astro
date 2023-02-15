@@ -23,14 +23,19 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
   </nav>
 
   <main>
-    <Step step={1} client:only="react">
+    <Step step={1} client:load>
       <section class="step personal-info">
-        <h1>Personal info</h1>
-        <p class="description">
-          Please provide your name, email address, and phone number.
-        </p>
+        <nav>
+          <StepIndicator client:load />
+        </nav>
+        <article>
+          <h1>Personal info</h1>
+          <p class="description">
+            Please provide your name, email address, and phone number.
+          </p>
 
-        <PersonalInfo client:only="react" />
+          <PersonalInfo client:load />
+        </article>
       </section>
     </Step>
     <!-- Step 1 end -->
@@ -38,55 +43,72 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     <!-- Step 2 start -->
     <Step step={2} client:load>
       <section class="step">
-        <h1>Select your plan</h1>
-        <p class="description">
-          You have the option of monthly or yearly billing.
-        </p>
+        <nav>
+          <StepIndicator client:load />
+        </nav>
+        <article>
+          <h1>Select your plan</h1>
+          <p class="description">
+            You have the option of monthly or yearly billing.
+          </p>
 
-        <div class="plan-selection">
-          {
-            planData.map((plan) => (
-              <PlanItem
-                client:only="react"
-                src={`${Astro.url.href}/icon-${plan.title.toLowerCase()}.svg`}
-                plan={plan}
-              />
-            ))
-          }
-        </div>
+          <div class="plan-selection">
+            {
+              planData.map((plan) => (
+                <PlanItem
+                  client:only="react"
+                  src={`${Astro.url.href}/icon-${plan.title.toLowerCase()}.svg`}
+                  plan={plan}
+                />
+              ))
+            }
+          </div>
 
-        <SubscriptionTimeToggle client:only="react" />
+          <SubscriptionTimeToggle client:load />
+        </article>
       </section>
     </Step>
     <!-- Step 2 end -->
 
     <!-- Step 3 start -->
-    <Step step={3} client:idle>
+    <Step step={3} client:load>
       <section class="step">
-        <h1>Pick add-ons</h1>
-        <p class="description">Add-ons help enhance your gaming experience.</p>
+        <nav>
+          <StepIndicator client:only="react" />
+        </nav>
+        <article>
+          <h1>Pick add-ons</h1>
+          <p class="description">
+            Add-ons help enhance your gaming experience.
+          </p>
 
-        <div class="addon-selection">
-          {
-            addonData.map((addon) => (
-              <AddonItem client:only="react" addon={addon} />
-            ))
-          }
-        </div>
+          <div class="addon-selection">
+            {
+              addonData.map((addon) => (
+                <AddonItem client:only="react" addon={addon} />
+              ))
+            }
+          </div>
+        </article>
       </section>
     </Step>
 
     <!-- Step 3 end -->
 
     <!-- Step 4 start -->
-    <Step step={4} client:idle>
+    <Step step={4} client:load>
       <section class="step">
-        <h1>Finishing up</h1>
-        <p class="description">
-          Double-check everything looks OK before confirming.
-        </p>
+        <nav>
+          <StepIndicator client:only="react" />
+        </nav>
+        <article>
+          <h1>Finishing up</h1>
+          <p class="description">
+            Double-check everything looks OK before confirming.
+          </p>
 
-        <CheckoutList client:only="react" />
+          <CheckoutList client:only="react" />
+        </article>
       </section>
     </Step>
 
@@ -95,17 +117,22 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     <!-- Step 5 start -->
 
     <Step step={5} client:idle>
-      <section class="step thank-you">
-        <img
-          src={`${Astro.url.href}/icon-thank-you.svg`}
-          alt="red check icon"
-        />
-        <h1>Thank you!</h1>
-        <p>
-          Thanks for confirming your subscription! We hope you have fun using
-          our platform. If you ever need support, please feel free to email us
-          at support@loremgaming.com.
-        </p>
+      <section class="step">
+        <nav>
+          <StepIndicator client:only="react" />
+        </nav>
+        <article class="thank-you">
+          <img
+            src={`${Astro.url.href}/icon-thank-you.svg`}
+            alt="red check icon"
+          />
+          <h1>Thank you!</h1>
+          <p>
+            Thanks for confirming your subscription! We hope you have fun using
+            our platform. If you ever need support, please feel free to email us
+            at support@loremgaming.com.
+          </p>
+        </article>
       </section>
     </Step>
 
@@ -159,7 +186,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
   body {
     min-height: 100vh;
     background-color: var(--white);
-    background-image: url("/frontend-mentor/challenges/multi-step-form/bg-sidebar-mobile.svg");
+    /* background-image: url("/frontend-mentor/challenges/multi-step-form/bg-sidebar-mobile.svg"); */
     background-position-y: top;
     background-repeat: no-repeat;
     font-size: 16px;
@@ -178,6 +205,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
   nav {
     width: 100%;
     padding: 36px;
+    padding-bottom: 100px;
+    background-image: url("/frontend-mentor/challenges/multi-step-form/bg-sidebar-mobile.svg");
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   nav ul {
@@ -192,7 +224,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     display: none;
   }
 
-  .step-indicator {
+  .step-indicator span {
     height: 36px;
     width: 36px;
     border: 1px solid var(--pastel-blue);
@@ -204,7 +236,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     font-weight: 700;
   }
 
-  .step-indicator.active {
+  .step-indicator.active span {
     background-color: var(--pastel-blue);
     color: var(--marine-blue);
   }
@@ -215,6 +247,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     border-radius: 16px;
     background-color: var(--alabaster);
     box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.2);
+    margin-top: -68px;
   }
 
   .step h1 {
@@ -558,5 +591,83 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
 
   .navigation-buttons .next.final:hover {
     opacity: 0.6;
+  }
+
+  @media only screen and (min-width: 756px) {
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .step {
+      width: 848px;
+      height: 600px;
+      display: flex;
+      margin-top: unset;
+      justify-content: space-between;
+      padding: 20px;
+      /* gap: 48px; */
+    }
+
+    .step article {
+      padding: 24px;
+      margin-inline: 48px;
+      flex: 1;
+    }
+
+    .step h1 {
+      font-size: 32px;
+    }
+
+    nav {
+      display: none;
+    }
+
+    .step nav {
+      width: auto;
+      display: flex;
+      background-image: url("/frontend-mentor/challenges/multi-step-form/bg-sidebar-desktop.svg");
+      background-size: cover;
+      border-radius: 8px;
+    }
+
+    .step nav ul {
+      justify-content: start;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step-indicator > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-indicator p,
+    .step-indicator h2 {
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .step-indicator p {
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--light-blue);
+    }
+
+    .step-indicator h2 {
+      font-weight: 700;
+      color: white;
+    }
+
+    .thank-you {
+      justify-content: center;
+    }
   }
 </style>
