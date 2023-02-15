@@ -3,6 +3,7 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
 
 import Step from "../../components/challenges/multi-step-form/Step";
 import StepIndicator from "../../components/challenges/multi-step-form/StepIndicator";
+import PersonalInfo from "../../components/challenges/multi-step-form/PersonalInfo";
 import StepNavigation from "../../components/challenges/multi-step-form/StepNavigation";
 import SubscriptionTimeToggle from "../../components/challenges/multi-step-form/SubscriptionTimeToggle";
 import PlanItem from "../../components/challenges/multi-step-form/PlanItem";
@@ -29,28 +30,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
           Please provide your name, email address, and phone number.
         </p>
 
-        <label>
-          <span>Name</span>
-          <input name="name" type="text" placeholder="e.g. Stephen King" />
-        </label>
-
-        <label>
-          <span>Email Address</span>
-          <input
-            name="email"
-            type="text"
-            placeholder="e.g. stephenking@lorem.com"
-          />
-        </label>
-
-        <label>
-          <span>Phone Number</span>
-          <input
-            name="phone-number"
-            type="text"
-            placeholder="e.g. +1 234 567 890"
-          />
-        </label>
+        <PersonalInfo client:only="react" />
       </section>
     </Step>
     <!-- Step 1 end -->
@@ -132,7 +112,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     <!-- Step 5 end -->
   </main>
 
-  <StepNavigation client:load />
+  <StepNavigation client:only="react" />
 </ChallengeLayout>
 
 <style is:inline>
@@ -257,11 +237,17 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     padding: 8px 12px;
     border-radius: 4px;
     font-size: 14px;
+    margin-top: 4px;
+    transition: border-color 200ms ease-in;
   }
 
   .step input::placeholder {
     font-weight: 700;
     color: var(--cool-gray);
+  }
+
+  .personal-info input.error {
+    border-color: var(--strawberry-red);
   }
 
   .personal-info label {
@@ -270,6 +256,16 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     font-size: 12px;
     display: block;
     margin-bottom: 12px;
+  }
+
+  .personal-info label div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .personal-info span.error {
+    color: var(--strawberry-red);
+    font-weight: 700;
   }
 
   .plan-selection input {
@@ -286,6 +282,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     padding: 16px;
     margin-bottom: 12px;
     cursor: pointer;
+    transition: border-color 150ms ease-in;
+  }
+
+  .plan-selection label:hover {
+    border-color: var(--marine-blue);
   }
 
   .plan-selection input[type="radio"]:checked + label {
@@ -372,6 +373,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     border-radius: 8px;
     margin-bottom: 12px;
     cursor: pointer;
+    transition: border-color 150ms ease-in;
+  }
+
+  .addon-selection label:hover {
+    border-color: var(--marine-blue);
   }
 
   .addon-selection label .checkmark {
@@ -526,6 +532,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
 
   .navigation-buttons .back {
     color: var(--cool-gray);
+    transition: color 150ms ease-in;
+  }
+
+  .navigation-buttons .back:hover {
+    color: var(--marine-blue);
   }
 
   .navigation-buttons .next {
@@ -533,9 +544,19 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     color: var(--white);
     padding: 8px 16px;
     border-radius: 4px;
+    transition: opacity 150ms ease-in;
+  }
+
+  .navigation-buttons .next:hover {
+    opacity: 0.85;
   }
 
   .navigation-buttons .next.final {
     background-color: var(--purplish-blue);
+    transition: opacity 150ms ease-in;
+  }
+
+  .navigation-buttons .next.final:hover {
+    opacity: 0.6;
   }
 </style>

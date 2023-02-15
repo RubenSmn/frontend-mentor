@@ -1,4 +1,4 @@
-import { atom } from "nanostores";
+import { atom, map } from "nanostores";
 
 export const currentStep = atom(1);
 
@@ -52,3 +52,9 @@ export const planData: PlanType[] = [
 export const subscriptionPlan = atom<PlanType>(planData[0]);
 
 export const addons = atom<AddonType[]>([]);
+
+export const user = map<Record<string, string | null>>({
+  name: null,
+  email: null,
+  phone: null,
+});
