@@ -28,72 +28,62 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
         <StepIndicator client:load />
       </nav>
       <Step step={1} client:load>
-        <article class="personal-info">
-          <h1>Personal info</h1>
-          <p class="description">
-            Please provide your name, email address, and phone number.
-          </p>
+        <h1>Personal info</h1>
+        <p class="description">
+          Please provide your name, email address, and phone number.
+        </p>
 
-          <PersonalInfo client:load />
-        </article>
+        <PersonalInfo client:load />
       </Step>
       <!-- Step 1 end -->
 
       <!-- Step 2 start -->
       <Step step={2} client:idle>
-        <article>
-          <h1>Select your plan</h1>
-          <p class="description">
-            You have the option of monthly or yearly billing.
-          </p>
+        <h1>Select your plan</h1>
+        <p class="description">
+          You have the option of monthly or yearly billing.
+        </p>
 
-          <div class="plan-selection">
-            {
-              planData.map((plan) => (
-                <PlanItem
-                  client:only="react"
-                  src={`${Astro.url.href}/icon-${plan.title.toLowerCase()}.svg`}
-                  plan={plan}
-                />
-              ))
-            }
-          </div>
+        <div class="plan-selection">
+          {
+            planData.map((plan) => (
+              <PlanItem
+                client:only="react"
+                src={`${Astro.url.href}/icon-${plan.title.toLowerCase()}.svg`}
+                plan={plan}
+              />
+            ))
+          }
+        </div>
 
-          <SubscriptionTimeToggle client:only="react" />
-        </article>
+        <SubscriptionTimeToggle client:only="react" />
       </Step>
       <!-- Step 2 end -->
 
       <!-- Step 3 start -->
       <Step step={3} client:idle>
-        <article>
-          <h1>Pick add-ons</h1>
-          <p class="description">
-            Add-ons help enhance your gaming experience.
-          </p>
+        <h1>Pick add-ons</h1>
+        <p class="description">Add-ons help enhance your gaming experience.</p>
 
-          <div class="addon-selection">
-            {
-              addonData.map((addon) => (
-                <AddonItem client:only="react" addon={addon} />
-              ))
-            }
-          </div>
-        </article>
+        <div class="addon-selection">
+          {
+            addonData.map((addon) => (
+              <AddonItem client:only="react" addon={addon} />
+            ))
+          }
+        </div>
       </Step>
 
       <!-- Step 3 end -->
 
       <!-- Step 4 start -->
       <Step step={4} client:idle>
-        <article>
-          <h1>Finishing up</h1>
-          <p class="description">
-            Double-check everything looks OK before confirming.
-          </p>
+        <h1>Finishing up</h1>
+        <p class="description">
+          Double-check everything looks OK before confirming.
+        </p>
 
-          <CheckoutList client:only="react" />
-        </article>
+        <CheckoutList client:only="react" />
       </Step>
 
       <!-- Step 4 end -->
@@ -191,6 +181,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 99;
   }
 
   nav ul {
@@ -203,6 +194,10 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
   nav p,
   nav h2 {
     display: none;
+  }
+
+  .step article {
+    z-index: 1;
   }
 
   .step nav {
@@ -221,7 +216,6 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     font-weight: 700;
   }
 
-  /* .step-indicator span.active { */
   .step-indicator.active span {
     background-color: var(--pastel-blue);
     color: var(--marine-blue);
@@ -234,6 +228,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     background-color: var(--alabaster);
     box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.2);
     margin-top: -68px;
+    overflow: hidden;
   }
 
   .step h1 {
@@ -556,6 +551,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     padding: 20px;
     font-size: 14px;
     font-weight: 500;
+    z-index: 999;
   }
 
   .navigation-buttons .back {
