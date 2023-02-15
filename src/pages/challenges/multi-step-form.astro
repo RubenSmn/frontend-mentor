@@ -114,6 +114,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
           </p>
         </article>
       </Step>
+      <StepNavigation client:only="react" />
     </section>
 
     <!-- Step 5 end -->
@@ -204,6 +205,10 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     display: none;
   }
 
+  .step nav {
+    display: none;
+  }
+
   .step-indicator span {
     height: 36px;
     width: 36px;
@@ -253,6 +258,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     font-size: 14px;
     margin-top: 4px;
     transition: border-color 200ms ease-in;
+    outline: none;
+  }
+
+  .step input[type="text"]:focus {
+    border-color: var(--marine-blue);
   }
 
   .step input::placeholder {
@@ -531,6 +541,10 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     font-size: 15px;
   }
 
+  .step .navigation-buttons {
+    display: none;
+  }
+
   .navigation-buttons {
     position: absolute;
     bottom: 0;
@@ -539,7 +553,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
+    padding: 20px;
     font-size: 14px;
     font-weight: 500;
   }
@@ -588,7 +602,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
       margin-top: unset;
       justify-content: space-between;
       padding: 20px;
-      /* gap: 48px; */
+      position: relative;
+    }
+
+    .navigation-buttons {
+      display: none;
     }
 
     .step article {
@@ -647,8 +665,32 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
       color: white;
     }
 
+    .plan-selection {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .plan-selection label {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      gap: 48px;
+    }
+    .plan-selection div {
+      flex: unset;
+    }
+
     .thank-you {
       justify-content: center;
+    }
+
+    .step .navigation-buttons {
+      display: flex;
+      right: calc(48px + 24px);
+      left: unset;
+      width: calc(100% - 220px - 48px * 2 - 24px * 2);
     }
   }
 </style>
