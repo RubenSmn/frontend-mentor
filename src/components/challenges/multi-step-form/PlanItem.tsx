@@ -38,7 +38,9 @@ function PlanItem({ src, plan }: Props) {
         <img src={src} alt={plan.title} />
         <div>
           <h3>{plan.title}</h3>
-          <p>${itemCost}/mo</p>
+          <p>
+            ${itemCost}/{$isSubscriptionTimeMonthly ? "mo" : "yr"}
+          </p>
           {$isSubscriptionTimeMonthly ? null : (
             <p className="yearly-information">2 months free</p>
           )}
