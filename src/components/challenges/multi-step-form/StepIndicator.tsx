@@ -56,7 +56,7 @@ function StepIndicator() {
       </li>
       <li className={`step-indicator`}>
         <motion.span
-          animate={$currentStep === 4 ? "active" : "inactive"}
+          animate={$currentStep >= 4 ? "active" : "inactive"}
           variants={indicator}
         >
           4
