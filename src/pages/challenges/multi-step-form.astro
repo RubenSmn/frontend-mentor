@@ -19,16 +19,16 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
 <ChallengeLayout title="Job Listings with Filtering">
   <Fragment slot="links"></Fragment>
   <nav>
-    <StepIndicator client:load />
+    <StepIndicator client:only="react" />
   </nav>
 
   <main>
-    <Step step={1} client:load>
-      <section class="step personal-info">
-        <nav>
-          <StepIndicator client:load />
-        </nav>
-        <article>
+    <section class="step">
+      <nav>
+        <StepIndicator client:load />
+      </nav>
+      <Step step={1} client:load>
+        <article class="personal-info">
           <h1>Personal info</h1>
           <p class="description">
             Please provide your name, email address, and phone number.
@@ -36,16 +36,11 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
 
           <PersonalInfo client:load />
         </article>
-      </section>
-    </Step>
-    <!-- Step 1 end -->
+      </Step>
+      <!-- Step 1 end -->
 
-    <!-- Step 2 start -->
-    <Step step={2} client:load>
-      <section class="step">
-        <nav>
-          <StepIndicator client:load />
-        </nav>
+      <!-- Step 2 start -->
+      <Step step={2} client:idle>
         <article>
           <h1>Select your plan</h1>
           <p class="description">
@@ -64,18 +59,13 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
             }
           </div>
 
-          <SubscriptionTimeToggle client:load />
+          <SubscriptionTimeToggle client:only="react" />
         </article>
-      </section>
-    </Step>
-    <!-- Step 2 end -->
+      </Step>
+      <!-- Step 2 end -->
 
-    <!-- Step 3 start -->
-    <Step step={3} client:load>
-      <section class="step">
-        <nav>
-          <StepIndicator client:only="react" />
-        </nav>
+      <!-- Step 3 start -->
+      <Step step={3} client:idle>
         <article>
           <h1>Pick add-ons</h1>
           <p class="description">
@@ -90,17 +80,12 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
             }
           </div>
         </article>
-      </section>
-    </Step>
+      </Step>
 
-    <!-- Step 3 end -->
+      <!-- Step 3 end -->
 
-    <!-- Step 4 start -->
-    <Step step={4} client:load>
-      <section class="step">
-        <nav>
-          <StepIndicator client:only="react" />
-        </nav>
+      <!-- Step 4 start -->
+      <Step step={4} client:idle>
         <article>
           <h1>Finishing up</h1>
           <p class="description">
@@ -109,18 +94,13 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
 
           <CheckoutList client:only="react" />
         </article>
-      </section>
-    </Step>
+      </Step>
 
-    <!-- Step 4 end -->
+      <!-- Step 4 end -->
 
-    <!-- Step 5 start -->
+      <!-- Step 5 start -->
 
-    <Step step={5} client:idle>
-      <section class="step">
-        <nav>
-          <StepIndicator client:only="react" />
-        </nav>
+      <Step step={5} client:idle>
         <article class="thank-you">
           <img
             src={`${Astro.url.href}/icon-thank-you.svg`}
@@ -133,8 +113,8 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
             at support@loremgaming.com.
           </p>
         </article>
-      </section>
-    </Step>
+      </Step>
+    </section>
 
     <!-- Step 5 end -->
   </main>
@@ -236,6 +216,7 @@ import CheckoutList from "../../components/challenges/multi-step-form/CheckoutLi
     font-weight: 700;
   }
 
+  /* .step-indicator span.active { */
   .step-indicator.active span {
     background-color: var(--pastel-blue);
     color: var(--marine-blue);
