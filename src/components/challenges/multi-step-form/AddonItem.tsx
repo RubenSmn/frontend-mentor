@@ -19,7 +19,7 @@ function AddonItem({ addon }: Props) {
     if (e.currentTarget.checked === true) {
       addons.set([...addons.get(), addon]);
     } else {
-      addons.set(addons.get().filter((a) => a !== addon));
+      addons.set($addons.filter((a) => a.title !== addon.title));
     }
   }
 
