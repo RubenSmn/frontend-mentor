@@ -1,0 +1,89 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+---
+
+<ChallengeLayout title="Single Price Grid Component">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main
+    class="flex flex-col bg-[var(--white)] shadow-lg rounded-lg mx-5 overflow-hidden max-w-xl md:flex-row"
+  >
+    <div class="flex-1 md:basis-1/2">
+      <img
+        src={`${Astro.url.href}/image-product-mobile.jpg`}
+        alt="Gabrielle Essence"
+        class="md:hidden"
+      />
+      <img
+        src={`${Astro.url.href}/image-product-desktop.jpg`}
+        alt="Gabrielle Essence"
+        class="hidden md:block h-full"
+      />
+    </div>
+    <div class="flex-1 p-5 md:p-8 md:basis-1/2">
+      <p
+        class="font-[Montserrat] uppercase text-[var(--dark-grayish-blue)] font-[500] text-xs tracking-[0.2rem] mb-2"
+      >
+        Perfume
+      </p>
+
+      <h1
+        class="text-3xl text-[var(--very-dark-blue)] font-[Fraunces] mb-3 md:mb-5"
+      >
+        Gabrielle Essence Eau De Parfum
+      </h1>
+
+      <p class="text-sm mb-4 text-[var(--dark-grayish-blue)] md:mb-6">
+        A floral, solar and voluptuous interpretation composed by Olivier Polge,
+        Perfumer-Creator for the House of CHANEL.
+      </p>
+
+      <div class="flex justify-start items-center gap-4 mb-4 md:mb-6">
+        <h2 class="text-[var(--dark-cyan)] font-bold text-3xl font-[Fraunces]">
+          $149.99
+        </h2><p class="text-[var(--dark-grayish-blue)] text-sm line-through">
+          $169.99
+        </p>
+      </div>
+      <button
+        class="flex gap-2 w-full justify-center items-center bg-[var(--dark-cyan)] text-white p-3 rounded-lg font=[Montserrat] font-bold text-sm hover:bg-[var(--darker-cyan)] ease-in duration-150"
+      >
+        <img
+          src={`${Astro.url.href}/icon-cart.svg`}
+          alt="Shoppingcart icon"
+          class="h-4"
+        />
+        Add to Cart
+      </button>
+    </div>
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Fraunces", serif;
+    font-family: "Montserrat", sans-serif;
+
+    --dark-cyan: hsl(158, 36%, 37%);
+    --cream: hsl(30, 38%, 92%);
+    --very-dark-blue: hsl(212, 21%, 14%);
+    --dark-grayish-blue: hsl(228, 12%, 48%);
+    --white: hsl(0, 0%, 100%);
+    --darker-cyan: #264135;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cream);
+  }
+</style>
