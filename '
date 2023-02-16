@@ -35,12 +35,12 @@ import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
       </p>
 
       <h1
-        class="text-3xl text-[var(--very-dark-blue)] font-[Fraunces] leading-none mb-3 md:mb-5"
+        class="text-3xl text-[var(--very-dark-blue)] font-[Fraunces] leading-snug mb-3 md:mb-5"
       >
         Gabrielle Essence Eau De Parfum
       </h1>
 
-      <p class="text-sm mb-4 text-[var(--dark-grayish-blue)] leading-6 md:mb-6">
+      <p class="text-sm mb-4 text-[var(--dark-grayish-blue)] md:mb-6">
         A floral, solar and voluptuous interpretation composed by Olivier Polge,
         Perfumer-Creator for the House of CHANEL.
       </p>
