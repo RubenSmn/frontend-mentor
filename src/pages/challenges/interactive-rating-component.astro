@@ -1,0 +1,187 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+import Rating from "../../components/challenges/interactive-rating-component/Rating";
+import Step from "../../components/challenges/interactive-rating-component/Step";
+import SubmitButton from "../../components/challenges/interactive-rating-component/SubmitButton";
+import SelectedRating from "../../components/challenges/interactive-rating-component/SelectedRating";
+---
+
+<ChallengeLayout title="Interactive Rating Component" isDark>
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main>
+    <div class="card">
+      <Step client:load showOnSubmitted={false}>
+        <section class="rating">
+          <div class="star-container">
+            <img src={`${Astro.url.href}/icon-star.svg`} alt="Star icon" />
+          </div>
+          <h1>How did we do?</h1>
+          <p>
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <Rating client:load />
+          <SubmitButton client:load />
+        </section>
+      </Step>
+      <Step client:load showOnSubmitted={true}>
+        <section class="thank-you">
+          <img
+            src={`${Astro.url.href}/illustration-thank-you.svg`}
+            alt="Thank You"
+          />
+          <SelectedRating client:only="react" />
+          <h1>Thank you!</h1>
+          <p>
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </section>
+      </Step>
+    </div>
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Overpass", sans-serif;
+
+    --orange: hsl(25, 97%, 53%);
+    --white: hsl(0, 0%, 100%);
+    --light-grey: hsl(217, 12%, 63%);
+    --medium-grey: hsl(216, 12%, 54%);
+    --dark-blue: hsl(213, 19%, 18%);
+    --very-dark-blue: hsl(216, 12%, 8%);
+
+    --medium-blue: #2c323a;
+  }
+
+  body {
+    background-color: var(--very-dark-blue);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .card {
+    background-color: var(--dark-blue);
+    border-radius: 24px;
+    font-size: 15px;
+    margin: 24px;
+    box-shadow: 0 4px 24px -2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    max-width: 400px;
+  }
+
+  .card section {
+    padding: 24px;
+  }
+
+  .card .rating {
+    text-align: left;
+  }
+
+  .card .star-container {
+    height: 40px;
+    width: 40px;
+    margin-bottom: 16px;
+    border-radius: 24px;
+    display: flex;
+    background-color: var(--medium-blue);
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    overflow: hidden;
+  }
+
+  .star-container img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .card h1 {
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .card p {
+    margin-bottom: 24px;
+    font-weight: 400;
+    color: var(--light-grey);
+  }
+
+  .card .rating-container {
+    color: var(--light-grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .rate {
+    height: 40px;
+    width: 40px;
+    border-radius: 24px;
+    background-color: var(--medium-blue);
+    padding: 10px;
+  }
+
+  .submit {
+    background-color: var(--orange);
+    text-transform: uppercase;
+    padding: 12px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 24px;
+    margin-bottom: 8px;
+    transition: background-color 150ms ease-in, color 150ms ease-in;
+  }
+
+  .submit:hover {
+    background-color: var(--white);
+    color: var(--orange);
+  }
+
+  .submit:disabled:hover {
+    background-color: var(--orange);
+    color: var(--white);
+  }
+
+  .thank-you {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .thank-you img {
+    width: 50%;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  .thank-you div {
+    color: var(--orange);
+    background-color: var(--medium-blue);
+    border-radius: 16px;
+    padding: 4px 8px;
+    width: fit-content;
+    margin-bottom: 24px;
+  }
+
+  .thank-you h1 {
+    margin-bottom: 8px;
+  }
+</style>
