@@ -1,0 +1,83 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+---
+
+<ChallengeLayout title="Single Price Grid Component">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main
+    class="flex flex-col text-white shadow-xl rounded-md mx-6 overflow-hidden max-w-xl"
+  >
+    <article class="bg-white p-6 flex-1 text-[var(--cyan)] md:p-9">
+      <h2 class="text-xl font-bold mb-6">Join our community</h2>
+
+      <p class="text-[var(--bright-yellow)] font-bold mb-4">
+        30-day, hassle-free money back guarantee
+      </p>
+
+      <p class="text-[var(--grayish-blue)] mb-4 text-sm leading-7">
+        Gain access to our full library of tutorials along with expert code
+        reviews. Perfect for any developers who are serious about honing their
+        skills.
+      </p>
+    </article>
+    <div class="md:flex">
+      <article class="bg-[var(--cyan)] p-6 flex-1 md:p-9">
+        <h2 class="text-lg font-bold mb-4">Monthly Subscription</h2>
+
+        <div class="flex gap-3 mb-2 items-center">
+          <h3 class="text-3xl font-bold">&dollar;29</h3><span
+            class="text-sm text-[var(--light-gray)]">per month</span
+          >
+        </div>
+
+        <p class="mb-6">Full access for less than &dollar;1 a day</p>
+
+        <button
+          class="w-full bg-[var(--bright-yellow)] p-3 shadow-xl rounded-md font-bold"
+          >Sign Up</button
+        >
+      </article>
+      <article class="bg-[var(--cyan-mild)] p-6 flex-1 md:p-9">
+        <h2 class="text-lg font-bold mb-4">Why Us</h2>
+
+        <ul class="text-sm">
+          <li>Tutorials by industry experts</li>
+          <li>Peer &amp; expert code review</li>
+          <li>Coding exercises</li>
+          <li>Access to our GitHub repos</li>
+          <li>Community forum</li>
+          <li>Flashcard decks</li>
+          <li>New videos every week</li>
+        </ul>
+      </article>
+    </div>
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Karla", sans-serif;
+
+    --cyan: hsl(179, 62%, 43%);
+    --bright-yellow: hsl(71, 73%, 54%);
+    --light-gray: hsl(204, 43%, 93%);
+    --grayish-blue: hsl(218, 22%, 67%);
+    --cyan-mild: hsla(179, 62%, 43%, 80%);
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-gray);
+  }
+</style>
