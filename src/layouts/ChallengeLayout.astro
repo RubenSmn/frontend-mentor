@@ -19,22 +19,5 @@ const { title, isDark = false } = Astro.props;
   </head>
   <body>
     <slot />
-    <footer
-      class={`mx-auto mt-[100%] mb-8 text-xs text-center${
-        isDark ? " text-white" : ""
-      }`}
-    >
-      Challenge by
-      <a
-        href="https://www.frontendmentor.io?ref=challenge"
-        target="_blank"
-        class={isDark ? "text-blue-300" : "text-blue-700"}
-      >
-        Frontend Mentor</a
-      >. Coded by <a
-        href="https://github.com/RubenSmn"
-        class={isDark ? "text-blue-300" : "text-blue-700"}>RubenSmn</a
-      >.
-    </footer>
   </body>
 </html>
