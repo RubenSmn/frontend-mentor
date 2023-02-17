@@ -8,7 +8,7 @@ import Main from "../../components/challenges/rocket-take-off/Main";
   <Fragment slot="links"></Fragment>
 
   <main
-    class="max-w-[375px] max-h-[800px] h-screen w-full flex flex-col items-center relative overflow-hidden shadow-2xl"
+    class="max-w-full max-h-full h-screen w-full flex flex-col items-center relative overflow-hidden shadow-2xl sm:max-w-[375px] sm:max-h-[800px]"
   >
     <Main src={`${Astro.url.href}/rocket-launch.webp`} client:load />
   </main>
