@@ -1,12 +1,19 @@
 import { motion } from "framer-motion";
+import React, { useState } from "react";
 
 type Props = {
   src: string;
 };
 
 function Main({ src }: Props): JSX.Element {
+  const [reLaunch, setReLaunch] = useState(false);
+
+  function getStarted() {
+    setReLaunch((prev) => !prev);
+  }
+
   return (
-    <>
+    <React.Fragment key={reLaunch}>
       <motion.div
         className="flex-1 flex flex-col justify-center items-center"
         initial={{
@@ -32,7 +39,8 @@ function Main({ src }: Props): JSX.Element {
         <p>Are you ready to take off?</p>
       </motion.div>
       <motion.button
-        className="w-[70%] bg-[var(--cream-dark)] p-4 rounded-xl font-bold text-xl mb-20"
+        className="w-[70%] bg-[var(--cream-dark)] p-4 rounded-xl font-bold text-xl mb-20 z-10"
+        onClick={getStarted}
         initial={{
           opacity: 0,
         }}
@@ -91,7 +99,7 @@ function Main({ src }: Props): JSX.Element {
           },
         }}
       />
-    </>
+    </React.Fragment>
   );
 }
 
