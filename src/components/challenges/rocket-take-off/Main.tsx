@@ -65,6 +65,7 @@ function Main({ src }: Props): JSX.Element {
           y: "-100vh",
         }}
         transition={{
+          delay: 0.4,
           duration: 1,
         }}
       />
