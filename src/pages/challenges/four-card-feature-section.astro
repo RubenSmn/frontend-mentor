@@ -1,0 +1,115 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+---
+
+<ChallengeLayout title="Testimonials Grid Section">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main
+    class="flex flex-col justify-center items-center gap-4 mx-6 my-16 max-w-6xl"
+  >
+    <h1 class="invisible absolute">Four Card Feature Section</h1>
+    <h2
+      class="flex flex-col justify-center items-center gap-2 text-2xl font-[200] text-[var(--very-dark-blue)] text-center md:text-4xl"
+    >
+      <span>Reliable, efficient delivery</span><strong class="font-[600]"
+        >Powered by Technology</strong
+      >
+    </h2>
+
+    <p class="text-[var(--grayish-blue)] mb-12 text-center max-w-xl">
+      Our Artificial Intelligence powered tools use millions of project data
+      points to ensure that your project is successful
+    </p>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-4">
+      <section
+        class="rounded-md p-6 border-t-4 border-t-[var(--cyan)] shadow-lg md:row-[span_2/_4]"
+      >
+        <h2 class="text-xl mb-2 text-[var(--very-dark-blue)] font-[600]">
+          Supervisor
+        </h2>
+        <p class="text-[var(--grayish-blue)] mb-10 text-[15px]">
+          Monitors activity to identify project roadblocks
+        </p>
+        <img
+          src={`${Astro.url.href}/icon-supervisor.svg`}
+          alt=""
+          class="ml-auto"
+        />
+      </section>
+      <section
+        class="rounded-md p-6 border-t-4 border-t-[var(--red)] shadow-lg md:row-span-2"
+      >
+        <h2 class="text-xl mb-2 text-[var(--very-dark-blue)] font-[600]">
+          Team Builder
+        </h2>
+        <p class="text-[var(--grayish-blue)] mb-10 text-[15px]">
+          Scans our talent network to create the optimal team for your project
+        </p>
+        <img
+          src={`${Astro.url.href}/icon-team-builder.svg`}
+          alt=""
+          class="ml-auto"
+        />
+      </section>
+      <section
+        class="rounded-md p-6 border-t-4 border-t-[var(--orange)] shadow-lg md:row-span-2"
+      >
+        <h2 class="text-xl mb-2 text-[var(--very-dark-blue)] font-[600]">
+          Karma
+        </h2>
+        <p class="text-[var(--grayish-blue)] mb-10 text-[15px]">
+          Regularly evaluates our talent to ensure quality
+        </p>
+        <img src={`${Astro.url.href}/icon-karma.svg`} alt="" class="ml-auto" />
+      </section>
+      <section
+        class="rounded-md p-6 border-t-4 border-t-[var(--blue)] shadow-lg md:row-[span_2/_4] md:col-start-3"
+      >
+        <h2 class="text-xl mb-2 text-[var(--very-dark-blue)] font-[600]">
+          Calculator
+        </h2>
+
+        <p class="text-[var(--grayish-blue)] mb-10 text-[15px]">
+          Uses data from past projects to provide better delivery estimates
+        </p>
+        <img
+          src={`${Astro.url.href}/icon-calculator.svg`}
+          alt=""
+          class="ml-auto"
+        />
+      </section>
+    </div>
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Poppins", sans-serif;
+
+    --red: hsl(0, 78%, 62%);
+    --cyan: hsl(180, 62%, 55%);
+    --orange: hsl(34, 97%, 64%);
+    --blue: hsl(212, 86%, 64%);
+
+    --very-dark-blue: hsl(234, 12%, 34%);
+    --grayish-blue: hsl(229, 6%, 66%);
+    --very-light-gray: hsl(0, 0%, 98%);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--very-light-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
