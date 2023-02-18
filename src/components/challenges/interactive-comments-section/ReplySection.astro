@@ -1,0 +1,25 @@
+---
+import data from "../../../data/interactive-comments-section.json";
+---
+
+<section class="w-full p-4 bg-white rounded-md shadow-sm">
+  <form class="grid grid-cols-2 gap-4">
+    <fieldset class="col-span-2">
+      <textarea
+        name=""
+        rows="3"
+        placeholder="Add a comment..."
+        class="border-2 border-[var(--light-gray)] rounded-lg py-2 px-6 outline-[var(--moderate-blue)] font-[500] w-full"
+      ></textarea>
+    </fieldset>
+    <img
+      src={`${Astro.url.href}${data.currentUser.image.png}`}
+      alt={data.currentUser.username}
+      class="h-8 self-center justify-self-start"
+    />
+    <button
+      class="px-6 py-3 rounded-md uppercase font-[500] text-white bg-[var(--moderate-blue)] self-center justify-self-end hover:opacity-70 ease-in duration-150"
+      >Send</button
+    >
+  </form>
+</section>

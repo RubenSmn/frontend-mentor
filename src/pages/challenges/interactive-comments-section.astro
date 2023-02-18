@@ -1,0 +1,78 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+
+export type CommentType = {
+  id: number;
+  content: string;
+  createdAt: string;
+  score: number;
+  replyingTo?: string;
+  user: {
+    image: {
+      png: string;
+      webp: string;
+    };
+    username: string;
+  };
+};
+
+import data from "../../data/interactive-comments-section.json";
+import Comment from "../../components/challenges/interactive-comments-section/Comment.astro";
+import ReplySection from "../../components/challenges/interactive-comments-section/ReplySection.astro";
+---
+
+<ChallengeLayout title="Interactive Comments Section">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main class="flex flex-col justify-center items-center gap-4 mx-4 my-8">
+    {
+      data.comments.map((comment) => (
+        <>
+          <Comment comment={comment} />
+          {comment.replies.length > 0 ? (
+            <div class="flex flex-col gap-4 border-l-2 border-[var(--light-gray)] pl-4">
+              {comment.replies.map((reply) => {
+                return <Comment comment={reply} />;
+              })}
+            </div>
+          ) : null}
+        </>
+      ))
+    }
+    <ReplySection />
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Rubik", sans-serif;
+
+    /* Primary */
+
+    --moderate-blue: hsl(238, 40%, 52%);
+    --soft-red: hsl(358, 79%, 66%);
+    --light-grayish-blue: hsl(239, 57%, 85%);
+    --pale-red: hsl(357, 100%, 86%);
+
+    /* Neutral */
+
+    --dark-blue: hsl(212, 24%, 26%);
+    --grayish-blue: hsl(211, 10%, 45%);
+    --light-gray: hsl(223, 19%, 93%);
+    --very-light-gray: hsl(228, 33%, 97%);
+    --white: hsl(0, 0%, 100%);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--light-gray);
+    filter: contrast(70%);
+  }
+</style>
