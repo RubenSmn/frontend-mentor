@@ -1,24 +1,11 @@
 ---
 import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
 
-export type CommentType = {
-  id: number;
-  content: string;
-  createdAt: string;
-  score: number;
-  replyingTo?: string;
-  user: {
-    image: {
-      png: string;
-      webp: string;
-    };
-    username: string;
-  };
-};
-
 import data from "../../data/interactive-comments-section.json";
-import Comment from "../../components/challenges/interactive-comments-section/Comment.astro";
-import ReplySection from "../../components/challenges/interactive-comments-section/ReplySection.astro";
+import Comment from "../../components/challenges/interactive-comments-section/Comment";
+import ReplySection from "../../components/challenges/interactive-comments-section/ReplySection";
+import DeleteModal from "../../components/challenges/interactive-comments-section/DeleteModal";
+import App from "../../components/challenges/interactive-comments-section/App";
 ---
 
 <ChallengeLayout title="Interactive Comments Section">
@@ -31,23 +18,13 @@ import ReplySection from "../../components/challenges/interactive-comments-secti
     />
   </Fragment>
 
-  <main class="flex flex-col justify-center items-center gap-4 mx-4 my-8">
-    {
-      data.comments.map((comment) => (
-        <>
-          <Comment comment={comment} />
-          {comment.replies.length > 0 ? (
-            <div class="flex flex-col gap-4 border-l-2 border-[var(--light-gray)] pl-4">
-              {comment.replies.map((reply) => {
-                return <Comment comment={reply} />;
-              })}
-            </div>
-          ) : null}
-        </>
-      ))
-    }
-    <ReplySection />
-  </main>
+  <div class="h-screen overflow-y-scroll">
+    <main class="flex flex-col justify-center items-center gap-4 px-4 py-8">
+      <App client:load src={Astro.url.href} />
+      <ReplySection src={Astro.url.href} type="Send" />
+    </main>
+  </div>
+  <DeleteModal client:idle />
 </ChallengeLayout>
 
 <style is:inline>
@@ -72,7 +49,8 @@ import ReplySection from "../../components/challenges/interactive-comments-secti
 
   body {
     min-height: 100vh;
-    background-color: var(--light-gray);
-    filter: contrast(70%);
+    background-color: var(--very-light-gray);
+    /* filter: contrast(70%); */
+    /* position: relative; */
   }
 </style>
