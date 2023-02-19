@@ -1,13 +1,29 @@
 import { useStore } from "@nanostores/react";
 import { useState } from "react";
+import { humaninzedTimeAgo } from "../../../helpers/time";
 import { useModal } from "../../../hooks/challenges/interactive-comments-section/useModal";
 import ReplySection from "./ReplySection";
-import { currentUser, normalizedComments } from "./Store";
+import { CommentType, currentUser, normalizedComments } from "./Store";
 
 type Props = {
   id: string;
   src: string;
 };
+
+function createComment(
+  id: number,
+  comment: string,
+  parentId: number
+): CommentType {
+  return {
+    id: id,
+    user: currentUser,
+    content: comment,
+    score: 0,
+    createdAt: humaninzedTimeAgo(new Date()),
+    parentId: parentId,
+  };
+}
 
 function Comment({ id, src }: Props) {
   const [showReply, setShowReply] = useState(false);
@@ -17,13 +33,20 @@ function Comment({ id, src }: Props) {
   const comment = $comments[id];
   const isCurrentUser = comment.user.username === currentUser.username;
 
-  function onDelete() {
-    console.log("removing this comment", comment);
+  function onReply(content: string) {
+    const newComment = createComment(
+      Object.keys($comments).length + 1,
+      content,
+      comment.id
+    );
+    setShowReply(false);
+    normalizedComments.setKey(newComment.id, newComment);
   }
 
-  function handleDelete() {
-    open();
-    console.log("open delete modal");
+  function onDelete() {
+    const updatedComments = { ...$comments };
+    delete updatedComments[id];
+    normalizedComments.set(updatedComments);
   }
 
   function handleEdit() {
@@ -103,7 +126,7 @@ function Comment({ id, src }: Props) {
             <div className="flex gap-4">
               <button
                 className="flex justify-between items-center gap-2 text-[var(--soft-red)] font-bold hover:opacity-70 ease-in duration-150"
-                onClick={handleDelete}
+                onClick={open}
               >
                 <img src={`${src}/icon-delete.svg`} alt="Reply icon" />
                 Delete
@@ -127,7 +150,9 @@ function Comment({ id, src }: Props) {
           )}
         </footer>
       </section>
-      {showReply ? <ReplySection src={src} type={"Reply"} /> : null}
+      {showReply ? (
+        <ReplySection src={src} type={"Reply"} onReply={onReply} />
+      ) : null}
     </>
   );
 }

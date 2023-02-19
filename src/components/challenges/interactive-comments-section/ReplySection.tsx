@@ -1,17 +1,25 @@
-import { currentUser, UserType } from "./Store";
+import { currentUser } from "./Store";
 
 type Props = {
   src: string;
   type: string;
+  onReply: (comment: string) => void;
 };
 
-function ReplySection({ src, type }: Props) {
+function ReplySection({ src, type, onReply }: Props) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    onReply(formData.get("comment") as string);
+  }
+
   return (
     <section className="w-full p-4 bg-white rounded-md shadow-sm">
-      <form className="grid grid-cols-2 gap-4">
+      <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit}>
         <fieldset className="col-span-2">
           <textarea
-            name=""
+            name="comment"
             rows={3}
             placeholder="Add a comment..."
             className="border-2 border-[var(--light-gray)] text-[var(--grayish-blue)] rounded-lg py-2 px-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--moderate-blue)] placeholder:font-[500] w-full"

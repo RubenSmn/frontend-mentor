@@ -1,4 +1,4 @@
-import { atom, computed } from "nanostores";
+import { atom, computed, map } from "nanostores";
 import data from "../../../data/interactive-comments-section.json";
 
 export type UserType = {
