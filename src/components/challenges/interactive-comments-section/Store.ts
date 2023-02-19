@@ -52,7 +52,7 @@ function buildTreeFromNormalization(comments: NormalizedCommentType) {
   return dataTree;
 }
 
-export const normalizedComments = atom<NormalizedCommentType>(
+export const normalizedComments = map<NormalizedCommentType>(
   normalize(data.comments)
 );
 
