@@ -16,7 +16,10 @@ function DeleteModal() {
   }
 
   return $isDeleteModalShown ? (
-    <div className="absolute top-0 left-0 h-screen w-screen bg-black/50 flex justify-center items-center z-50 overflow-hidden">
+    <div
+      className="absolute top-0 left-0 h-screen w-screen bg-black/50 flex justify-center items-center z-50 overflow-hidden"
+      onClick={handleCancel}
+    >
       <div className="max-w-xs bg-white rounded-lg p-5">
         <h2 className="font-[500] text-xl mb-3 text-[var(--grayish-blue)]">
           Delete comment
