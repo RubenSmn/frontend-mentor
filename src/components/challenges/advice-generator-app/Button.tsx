@@ -10,7 +10,6 @@ function Button({ src }: Props) {
       cache: "reload",
     });
     const data = await response.json();
-    console.log(data);
     slip.set(data.slip);
   }
 
