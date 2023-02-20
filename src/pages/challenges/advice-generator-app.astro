@@ -1,0 +1,58 @@
+---
+import ChallengeLayout from "../../layouts/ChallengeLayout.astro";
+
+import Advice from "../../components/challenges/advice-generator-app/Advice";
+import Button from "../../components/challenges/advice-generator-app/Button";
+
+const response = await fetch("https://api.adviceslip.com/advice");
+const data = await response.json();
+const { slip } = data;
+---
+
+<ChallengeLayout title="Advice Generator App">
+  <Fragment slot="links">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <main
+    class="flex flex-col justify-center items-center gap-4 bg-[var(--dark-grayish-blue)] w-full px-4 py-8 mx-4 rounded-md relative max-w-lg md:px-8"
+  >
+    <Advice initialSlip={slip} client:idle />
+    <img
+      src={`${Astro.url.href}/pattern-divider-mobile.svg`}
+      alt=""
+      class="mt-4 mb-6 md:hidden"
+    />
+    <img
+      src={`${Astro.url.href}/pattern-divider-desktop.svg`}
+      alt=""
+      class="mt-4 mb-6 hidden md:block"
+    />
+    <Button src={Astro.url.href} client:idle />
+  </main>
+</ChallengeLayout>
+
+<style is:inline>
+  :root {
+    font-family: "Manrope", sans-serif;
+
+    --light-cyan: hsl(193, 38%, 86%);
+    --neon-green: hsl(150, 100%, 66%);
+    --grayish-blue: hsl(217, 19%, 38%);
+    --dark-grayish-blue: hsl(217, 19%, 24%);
+    --dark-blue: hsl(218, 23%, 16%);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: var(--dark-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
