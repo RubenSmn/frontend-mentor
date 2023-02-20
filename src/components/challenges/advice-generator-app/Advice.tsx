@@ -1,4 +1,5 @@
 import { useStore } from "@nanostores/react";
+import { motion } from "framer-motion";
 import { slip, SlipType } from "./Store";
 
 type Props = {
@@ -13,9 +14,19 @@ function Advice({ initialSlip }: Props) {
       <h2 className="text-xs tracking-widest text-[var(--neon-green)] uppercase">
         Advice # {$slip.id}
       </h2>
-      <h1 className="text-3xl font-[800] text-[var(--light-cyan)] text-center">
+      <motion.h1
+        className="text-3xl font-[800] text-[var(--light-cyan)] text-center"
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.6,
+        }}
+        key={$slip.advice}
+      >
         "{$slip.advice}"
-      </h1>
+      </motion.h1>
     </>
   );
 }
