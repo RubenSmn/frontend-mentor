@@ -17,12 +17,15 @@ function CommentList({ src, commentTree }: Props) {
           <React.Fragment key={commentId}>
             <Comment id={commentId} src={src} />
             {replies.length > 0 ? (
-              <div className="flex flex-col gap-4 w-full border-l-2 border-[var(--light-gray)] pl-4">
-                <CommentList
-                  key={`comment-list-${commentId}`}
-                  commentTree={commentTree[commentId]}
-                  src={src}
-                />
+              <div className="flex gap-4 w-full">
+                <div className="border-l-2 border-[var(--light-gray)] ml-4"></div>
+                <div className="flex flex-col w-full gap-4">
+                  <CommentList
+                    key={`comment-list-${commentId}`}
+                    commentTree={commentTree[commentId]}
+                    src={src}
+                  />
+                </div>
               </div>
             ) : null}
           </React.Fragment>
