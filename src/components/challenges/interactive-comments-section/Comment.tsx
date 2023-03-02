@@ -157,8 +157,14 @@ function Comment({ id, src }: Props) {
                   className="flex justify-between items-center gap-2 text-[var(--moderate-blue)] font-bold hover:opacity-70 ease-in duration-150"
                   onClick={() => setShowReply((prev) => !prev)}
                 >
-                  <img src={`${src}/icon-reply.svg`} alt="Reply icon" />
-                  Reply
+                  {!showReply ? (
+                    <>
+                      <img src={`${src}/icon-reply.svg`} alt="Reply icon" />
+                      Reply
+                    </>
+                  ) : (
+                    "Cancel"
+                  )}
                 </button>
               )}
             </footer>

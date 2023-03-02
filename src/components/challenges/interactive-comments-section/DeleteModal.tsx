@@ -10,7 +10,6 @@ function DeleteModal() {
   }
 
   function handleDelete() {
-    console.log("deleting");
     isDeleteModalVisible.set(false);
     $deleteModalCallback();
   }
