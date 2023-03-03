@@ -1,6 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { useState } from "react";
-import { humaninzedTimeAgo } from "../../../helpers/time";
+import { humanizedTimeAgo } from "../../../helpers/time";
 import { useModal } from "../../../hooks/challenges/interactive-comments-section/useModal";
 import EditArea from "./EditArea";
 import ReplySection from "./ReplySection";
@@ -21,7 +21,7 @@ function createComment(
     user: currentUser,
     content: comment,
     score: 0,
-    createdAt: humaninzedTimeAgo(new Date()),
+    createdAt: humanizedTimeAgo(new Date()),
     parentId: parentId,
   };
 }

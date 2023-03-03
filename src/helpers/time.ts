@@ -1,4 +1,4 @@
-export function humaninzedTimeAgo(date: Date): string {
+export function humanizedTimeAgo(date: Date): string {
   const now = new Date();
   const seconds = Math.floor((now.valueOf() - date.valueOf()) / 1000);
 
