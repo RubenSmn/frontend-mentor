@@ -12,6 +12,7 @@ function ReplySection({ src, type, onReply }: Props) {
     const formData = new FormData(e.currentTarget);
 
     onReply(formData.get("comment") as string);
+    e.currentTarget.reset();
   }
 
   return (

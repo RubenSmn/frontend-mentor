@@ -21,7 +21,6 @@ import App from "../../components/challenges/interactive-comments-section/App";
   <div class="h-screen overflow-y-scroll">
     <main class="flex flex-col justify-center items-center gap-4 px-4 py-8">
       <App client:load src={Astro.url.href} />
-      <ReplySection src={Astro.url.href} type="Send" />
     </main>
   </div>
   <DeleteModal client:idle />
