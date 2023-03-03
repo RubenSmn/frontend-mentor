@@ -30,7 +30,7 @@ function ReplySection({ src, type, onReply }: Props) {
           alt={currentUser.username}
           className="h-8 self-center justify-self-start md:self-start"
         />
-        <button className="px-6 py-3 rounded-md uppercase font-[500] text-white bg-[var(--moderate-blue)] self-center justify-self-end focus:opacity-70 hover:opacity-70 ease-in duration-150 md:order-2 md:self-start">
+        <button className="px-4 py-2 rounded-md uppercase font-[500] text-white bg-[var(--moderate-blue)] self-center justify-self-end focus:opacity-70 hover:opacity-70 ease-in duration-150 md:order-2 md:self-start">
           {type}
         </button>
       </form>
