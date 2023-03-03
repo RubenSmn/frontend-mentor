@@ -73,8 +73,8 @@ function Comment({ id, src }: Props) {
 
   return (
     <>
-      <section className="grid grid-cols-2 p-4 bg-white rounded-md shadow-sm">
-        <header className="flex items-center gap-3 mb-3 col-span-2">
+      <section className="grid grid-cols-2 p-4 gap-y-3 bg-white rounded-md shadow-sm md:grid-cols-[auto,_1fr,_1fr] md:gap-x-4">
+        <header className="flex items-center gap-3 col-span-2 md:col-span-1">
           <img
             src={src + comment.user.image.png}
             alt={comment.user.username}
@@ -101,7 +101,7 @@ function Comment({ id, src }: Props) {
           />
         ) : (
           <>
-            <p className="text-[var(--grayish-blue)] mb-4 col-span-2">
+            <p className="text-[var(--grayish-blue)] col-span-2 md:col-start-2">
               {comment.replyingTo ? (
                 <span className="text-[var(--moderate-blue)] font-[500]">
                   @{comment.replyingTo}{" "}
@@ -109,7 +109,7 @@ function Comment({ id, src }: Props) {
               ) : null}
               {comment.content}
             </p>
-            <div className="flex justify-evenly items-center bg-[var(--very-light-gray)] rounded-lg self-center justify-self-start">
+            <div className="flex justify-evenly items-center bg-[var(--very-light-gray)] rounded-lg self-center justify-self-start md:col-span-1 md:row-start-1 md:row-span-2 md:self-start md:flex-col">
               <button
                 className={`px-4 py-3 fill-[#C5C6EF] hover:fill-[var(--moderate-blue)] ease-linear duration-150${
                   voteStatus === 1 ? " fill-[var(--moderate-blue)]" : ""
@@ -134,7 +134,7 @@ function Comment({ id, src }: Props) {
                 </svg>
               </button>
             </div>
-            <div className="self-center justify-self-end">
+            <div className="self-center justify-self-end md:row-start-1 md:col-start-3">
               {isCurrentUser ? (
                 <div className="flex gap-4">
                   <button

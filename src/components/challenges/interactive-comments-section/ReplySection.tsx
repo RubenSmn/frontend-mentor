@@ -16,8 +16,8 @@ function ReplySection({ src, type, onReply }: Props) {
 
   return (
     <section className="w-full p-4 bg-white rounded-md shadow-sm">
-      <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit}>
-        <fieldset className="col-span-2">
+      <form className="grid grid-cols-2 gap-4 md:flex" onSubmit={handleSubmit}>
+        <fieldset className="col-span-2 md:col-span-full md:order-1 md:flex-1">
           <textarea
             name="comment"
             rows={3}
@@ -28,9 +28,9 @@ function ReplySection({ src, type, onReply }: Props) {
         <img
           src={src + currentUser.image.png}
           alt={currentUser.username}
-          className="h-8 self-center justify-self-start"
+          className="h-8 self-center justify-self-start md:self-start"
         />
-        <button className="px-6 py-3 rounded-md uppercase font-[500] text-white bg-[var(--moderate-blue)] self-center justify-self-end focus:opacity-70 hover:opacity-70 ease-in duration-150">
+        <button className="px-6 py-3 rounded-md uppercase font-[500] text-white bg-[var(--moderate-blue)] self-center justify-self-end focus:opacity-70 hover:opacity-70 ease-in duration-150 md:order-2 md:self-start">
           {type}
         </button>
       </form>
