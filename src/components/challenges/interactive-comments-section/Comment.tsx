@@ -73,8 +73,8 @@ function Comment({ id, src }: Props) {
 
   return (
     <>
-      <section className="p-4 bg-white rounded-md shadow-sm">
-        <header className="flex items-center gap-3 mb-3">
+      <section className="grid grid-cols-2 p-4 bg-white rounded-md shadow-sm">
+        <header className="flex items-center gap-3 mb-3 col-span-2">
           <img
             src={src + comment.user.image.png}
             alt={comment.user.username}
@@ -101,7 +101,7 @@ function Comment({ id, src }: Props) {
           />
         ) : (
           <>
-            <p className="text-[var(--grayish-blue)] mb-4">
+            <p className="text-[var(--grayish-blue)] mb-4 col-span-2">
               {comment.replyingTo ? (
                 <span className="text-[var(--moderate-blue)] font-[500]">
                   @{comment.replyingTo}{" "}
@@ -109,32 +109,32 @@ function Comment({ id, src }: Props) {
               ) : null}
               {comment.content}
             </p>
-            <footer className="flex justify-between items-center">
-              <div className="flex justify-evenly items-center bg-[var(--very-light-gray)] rounded-lg">
-                <button
-                  className={`px-4 py-3 fill-[#C5C6EF] hover:fill-[var(--moderate-blue)] ease-linear duration-150${
-                    voteStatus === 1 ? " fill-[var(--moderate-blue)]" : ""
-                  }`}
-                  onClick={handleUpVote}
-                >
-                  <svg viewBox="0 0 11 11" height="11" width="11">
-                    <path d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"></path>
-                  </svg>
-                </button>
-                <span className="text-[var(--moderate-blue)] font-bold">
-                  {comment.score + voteStatus}
-                </span>
-                <button
-                  className={`px-4 py-3 fill-[#C5C6EF] hover:fill-[var(--moderate-blue)] ease-linear duration-150${
-                    voteStatus === -1 ? " fill-[var(--moderate-blue)]" : ""
-                  }`}
-                  onClick={handleDownVote}
-                >
-                  <svg viewBox="0 0 11 3" height="3" width="11">
-                    <path d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"></path>
-                  </svg>
-                </button>
-              </div>
+            <div className="flex justify-evenly items-center bg-[var(--very-light-gray)] rounded-lg self-center justify-self-start">
+              <button
+                className={`px-4 py-3 fill-[#C5C6EF] hover:fill-[var(--moderate-blue)] ease-linear duration-150${
+                  voteStatus === 1 ? " fill-[var(--moderate-blue)]" : ""
+                }`}
+                onClick={handleUpVote}
+              >
+                <svg viewBox="0 0 11 11" height="11" width="11">
+                  <path d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"></path>
+                </svg>
+              </button>
+              <span className="text-[var(--moderate-blue)] font-bold">
+                {comment.score + voteStatus}
+              </span>
+              <button
+                className={`px-4 py-3 fill-[#C5C6EF] hover:fill-[var(--moderate-blue)] ease-linear duration-150${
+                  voteStatus === -1 ? " fill-[var(--moderate-blue)]" : ""
+                }`}
+                onClick={handleDownVote}
+              >
+                <svg viewBox="0 0 11 3" height="3" width="11">
+                  <path d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"></path>
+                </svg>
+              </button>
+            </div>
+            <div className="self-center justify-self-end">
               {isCurrentUser ? (
                 <div className="flex gap-4">
                   <button
@@ -167,7 +167,7 @@ function Comment({ id, src }: Props) {
                   )}
                 </button>
               )}
-            </footer>
+            </div>
           </>
         )}
       </section>
