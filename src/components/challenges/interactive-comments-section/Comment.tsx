@@ -14,7 +14,8 @@ type Props = {
 function createComment(
   id: number,
   comment: string,
-  parentId: number
+  parentId: number,
+  replyingTo: string
 ): CommentType {
   return {
     id: id,
@@ -23,6 +24,7 @@ function createComment(
     score: 0,
     createdAt: humanizedTimeAgo(new Date()),
     parentId: parentId,
+    replyingTo: replyingTo,
   };
 }
 
@@ -39,7 +41,8 @@ function Comment({ id, src }: Props) {
     const newComment = createComment(
       Object.keys($comments).length + 1,
       content,
-      comment.id
+      comment.id,
+      comment.user.username
     );
     setShowReply(false);
     normalizedComments.setKey(newComment.id, newComment);
