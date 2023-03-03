@@ -76,7 +76,7 @@ function Comment({ id, src }: Props) {
 
   return (
     <>
-      <section className="grid grid-cols-2 p-4 gap-y-3 bg-white rounded-md shadow-sm md:grid-cols-[auto,_1fr,_1fr] md:gap-x-4">
+      <section className="grid grid-cols-2 w-full p-4 gap-y-3 bg-white rounded-md shadow-sm md:grid-cols-[auto,_1fr,_1fr] md:gap-x-4">
         <header className="flex items-center gap-3 col-span-2 md:col-span-1">
           <img
             src={src + comment.user.image.png}
